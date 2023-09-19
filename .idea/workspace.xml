@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="08e2a342-42ff-4bfb-91b5-26acfab9567c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/chains/custom_chains.py" beforeDir="false" afterPath="$PROJECT_DIR$/chains/custom_chains.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ice_breaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/ice_breaker.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2VU8IJ9qOGcyN9xO1kjvtr7JiPF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/varsh/Desktop/python/intro-to-vector",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\varsh\Desktop\python\ice_breaker" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ice_breaker" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="ice_breaker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="OPENAI_API_KEY" value="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" />
+        <env name="PROXYCURL_API_KEY" value="ytGHkcwlrWrVD1C8cfIS4Q" />
+        <env name="SERPAPI_API_KEY" value="92f73334e335cffafc23b5e37f3bbc35cad152a756829b4cc391f619993dc342" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\varsh\.virtualenvs\ice_breaker--g-6ujOY\Scripts\python.exe" />
+      <option name="SDK_NAME" value="Pipenv (ice_breaker)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ice_breaker.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="08e2a342-42ff-4bfb-91b5-26acfab9567c" name="Changes" comment="" />
+      <created>1694879216650</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694879216650</updated>
+    </task>
+    <servers />
+  </component>
+</project>
