@@ -12,6 +12,8 @@ install = "*"
 google-search-results = "*"
 tweepy = "*"
 flask = "*"
+pinecone-client = "*"
+tiktoken = "*"
 
 [dev-packages]
 
