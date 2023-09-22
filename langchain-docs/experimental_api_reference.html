@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>langchain_experimental API Reference &mdash; 🦜🔗 LangChain 0.0.299</title>
+  
+  <link rel="canonical" href="https://api.python.langchain.com/en/latest/experimental_api_reference.html" />
+
+  
+
+  <link rel="stylesheet" href="_static/css/vendor/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/autodoc_pydantic.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+  <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+  <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <link rel="stylesheet" href="/_/static/css/badge_only.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+<script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+<script src="_static/jquery.js"></script> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="/_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/api_reference", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "experimental_api_reference", "programming_language": "words", "project": "langchain", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "scikit-learn-modern", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="/_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+<body>
+
+
+<nav id="navbar" class="sk-docs-navbar navbar navbar-expand-md navbar-light bg-light py-0">
+  <div class="container-fluid sk-docs-container px-0">
+    <button
+      id="sk-navbar-toggler"
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="sk-navbar-collapse collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" href="api_reference.html">API</a>
+        </li>
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" href="#">Experimental</a>
+        </li>
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" target="_blank" rel="noopener noreferrer" href="https://python.langchain.com/">Python Docs</a>
+        </li>
+      </ul>
+      <div id="searchbox" role="search">
+          <div class="searchformwrapper">
+          <form class="search" action="search.html" method="get">
+            <input class="sk-search-text-input" type="text" name="q" aria-labelledby="searchlabel" />
+            <input class="sk-search-text-btn" type="submit" value="Go" />
+          </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="d-flex" id="sk-doc-wrapper">
+    <input type="checkbox" name="sk-toggle-checkbox" id="sk-toggle-checkbox">
+    <label id="sk-sidemenu-toggle" class="sk-btn-toggle-toc btn sk-btn-primary" for="sk-toggle-checkbox">Toggle Menu</label>
+    <div id="sk-sidebar-wrapper" class="border-right">
+      <div class="sk-sidebar-toc-wrapper">
+        <div class="btn-group w-100 mb-2" role="group" aria-label="rellinks">
+            <a href="#" role="button" class="btn sk-btn-rellink py-1 disabled"">Prev</a>
+            <a href="#" role="button" class="btn sk-btn-rellink disabled py-1">Up</a>
+            <a href="#" role="button" class="btn sk-btn-rellink py-1 disabled"">Next</a>
+        </div>
+        <div class="alert alert-warning p-1 mb-2" role="alert">
+          <p class="text-center mb-0">
+          <strong>LangChain 0.0.299</strong><br/>
+          </p>
+        </div>
+            <div class="sk-sidebar-toc">
+              <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">langchain_experimental</span></code> API Reference</a><ul>
+<li><a class="reference internal" href="#module-langchain_experimental.autonomous_agents"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.autonomous_agents</span></code></a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.comprehend_moderation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.comprehend_moderation</span></code></a><ul>
+<li><a class="reference internal" href="#id1">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.cpal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.cpal</span></code></a><ul>
+<li><a class="reference internal" href="#id2">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#langchain-experimental-data-anonymizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.data_anonymizer</span></code></a><ul>
+<li><a class="reference internal" href="#id3">Classes</a></li>
+<li><a class="reference internal" href="#id4">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.fallacy_removal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.fallacy_removal</span></code></a><ul>
+<li><a class="reference internal" href="#id5">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.generative_agents"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.generative_agents</span></code></a><ul>
+<li><a class="reference internal" href="#id6">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.graph_transformers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.graph_transformers</span></code></a><ul>
+<li><a class="reference internal" href="#id7">Classes</a></li>
+<li><a class="reference internal" href="#id8">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.llms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.llms</span></code></a><ul>
+<li><a class="reference internal" href="#id9">Classes</a></li>
+<li><a class="reference internal" href="#id10">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.pal_chain"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.pal_chain</span></code></a><ul>
+<li><a class="reference internal" href="#id11">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.plan_and_execute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.plan_and_execute</span></code></a><ul>
+<li><a class="reference internal" href="#id12">Classes</a></li>
+<li><a class="reference internal" href="#id13">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.prompt_injection_identifier"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.prompt_injection_identifier</span></code></a><ul>
+<li><a class="reference internal" href="#id14">Classes</a></li>
+<li><a class="reference internal" href="#id15">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.smart_llm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.smart_llm</span></code></a><ul>
+<li><a class="reference internal" href="#id16">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.sql"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.sql</span></code></a><ul>
+<li><a class="reference internal" href="#id17">Classes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-langchain_experimental.tot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.tot</span></code></a><ul>
+<li><a class="reference internal" href="#id18">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+      </div>
+    </div>
+    <div id="sk-page-content-wrapper">
+      <div class="sk-page-content container-fluid body px-md-3" role="main">
+        
+  <section id="langchain-experimental-api-reference">
+<span id="experimental-api-reference"></span><h1><code class="docutils literal notranslate"><span class="pre">langchain_experimental</span></code> API Reference<a class="headerlink" href="#langchain-experimental-api-reference" title="Permalink to this headline">¶</a></h1>
+<section id="module-langchain_experimental.autonomous_agents">
+<span id="langchain-experimental-autonomous-agents"></span><h2><a class="reference internal" href="#module-langchain_experimental.autonomous_agents" title="langchain_experimental.autonomous_agents"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.autonomous_agents</span></code></a><a class="headerlink" href="#module-langchain_experimental.autonomous_agents" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.agent.AutoGPT.html#langchain_experimental.autonomous_agents.autogpt.agent.AutoGPT" title="langchain_experimental.autonomous_agents.autogpt.agent.AutoGPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.agent.AutoGPT</span></code></a>(...)</p></td>
+<td><p>Agent class for interacting with Auto-GPT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.memory.AutoGPTMemory.html#langchain_experimental.autonomous_agents.autogpt.memory.AutoGPTMemory" title="langchain_experimental.autonomous_agents.autogpt.memory.AutoGPTMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.memory.AutoGPTMemory</span></code></a></p></td>
+<td><p>Memory for AutoGPT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTAction.html#langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTAction" title="langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.output_parser.AutoGPTAction</span></code></a>(...)</p></td>
+<td><p>Action returned by AutoGPTOutputParser.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTOutputParser.html#langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTOutputParser" title="langchain_experimental.autonomous_agents.autogpt.output_parser.AutoGPTOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.output_parser.AutoGPTOutputParser</span></code></a></p></td>
+<td><p>Output parser for AutoGPT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.output_parser.BaseAutoGPTOutputParser.html#langchain_experimental.autonomous_agents.autogpt.output_parser.BaseAutoGPTOutputParser" title="langchain_experimental.autonomous_agents.autogpt.output_parser.BaseAutoGPTOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.output_parser.BaseAutoGPTOutputParser</span></code></a></p></td>
+<td><p>Base Output parser for AutoGPT.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.prompt.AutoGPTPrompt.html#langchain_experimental.autonomous_agents.autogpt.prompt.AutoGPTPrompt" title="langchain_experimental.autonomous_agents.autogpt.prompt.AutoGPTPrompt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.prompt.AutoGPTPrompt</span></code></a></p></td>
+<td><p>Prompt for AutoGPT.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.prompt_generator.PromptGenerator.html#langchain_experimental.autonomous_agents.autogpt.prompt_generator.PromptGenerator" title="langchain_experimental.autonomous_agents.autogpt.prompt_generator.PromptGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.prompt_generator.PromptGenerator</span></code></a>()</p></td>
+<td><p>A class for generating custom prompt strings.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.baby_agi.baby_agi.BabyAGI.html#langchain_experimental.autonomous_agents.baby_agi.baby_agi.BabyAGI" title="langchain_experimental.autonomous_agents.baby_agi.baby_agi.BabyAGI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.baby_agi.baby_agi.BabyAGI</span></code></a></p></td>
+<td><p>Controller model for the BabyAGI agent.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.baby_agi.task_creation.TaskCreationChain.html#langchain_experimental.autonomous_agents.baby_agi.task_creation.TaskCreationChain" title="langchain_experimental.autonomous_agents.baby_agi.task_creation.TaskCreationChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.baby_agi.task_creation.TaskCreationChain</span></code></a></p></td>
+<td><p>Chain generating tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.baby_agi.task_execution.TaskExecutionChain.html#langchain_experimental.autonomous_agents.baby_agi.task_execution.TaskExecutionChain" title="langchain_experimental.autonomous_agents.baby_agi.task_execution.TaskExecutionChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.baby_agi.task_execution.TaskExecutionChain</span></code></a></p></td>
+<td><p>Chain to execute tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.baby_agi.task_prioritization.TaskPrioritizationChain.html#langchain_experimental.autonomous_agents.baby_agi.task_prioritization.TaskPrioritizationChain" title="langchain_experimental.autonomous_agents.baby_agi.task_prioritization.TaskPrioritizationChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.baby_agi.task_prioritization.TaskPrioritizationChain</span></code></a></p></td>
+<td><p>Chain to prioritize tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.hugginggpt.HuggingGPT.html#langchain_experimental.autonomous_agents.hugginggpt.hugginggpt.HuggingGPT" title="langchain_experimental.autonomous_agents.hugginggpt.hugginggpt.HuggingGPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.hugginggpt.HuggingGPT</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerationChain.html#langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerationChain" title="langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerationChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerationChain</span></code></a></p></td>
+<td><p>Chain to execute tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerator.html#langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerator" title="langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.repsonse_generator.ResponseGenerator</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_executor.Task.html#langchain_experimental.autonomous_agents.hugginggpt.task_executor.Task" title="langchain_experimental.autonomous_agents.hugginggpt.task_executor.Task"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_executor.Task</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_executor.TaskExecutor.html#langchain_experimental.autonomous_agents.hugginggpt.task_executor.TaskExecutor" title="langchain_experimental.autonomous_agents.hugginggpt.task_executor.TaskExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_executor.TaskExecutor</span></code></a>(plan)</p></td>
+<td><p>Load tools to execute tasks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.BasePlanner.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.BasePlanner" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.BasePlanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.BasePlanner</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.Plan.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.Plan" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.Plan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.Plan</span></code></a>(steps)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.PlanningOutputParser.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.PlanningOutputParser" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.PlanningOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.PlanningOutputParser</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.Step.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.Step" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.Step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.Step</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlaningChain.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlaningChain" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlaningChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.TaskPlaningChain</span></code></a></p></td>
+<td><p>Chain to execute tasks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlanner.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlanner" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.TaskPlanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.TaskPlanner</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.output_parser.preprocess_json_input.html#langchain_experimental.autonomous_agents.autogpt.output_parser.preprocess_json_input" title="langchain_experimental.autonomous_agents.autogpt.output_parser.preprocess_json_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.output_parser.preprocess_json_input</span></code></a>(...)</p></td>
+<td><p>Preprocesses a string to be parsed as json.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.autogpt.prompt_generator.get_prompt.html#langchain_experimental.autonomous_agents.autogpt.prompt_generator.get_prompt" title="langchain_experimental.autonomous_agents.autogpt.prompt_generator.get_prompt"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.autogpt.prompt_generator.get_prompt</span></code></a>(tools)</p></td>
+<td><p>Generates a prompt string.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.load_response_generator.html#langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.load_response_generator" title="langchain_experimental.autonomous_agents.hugginggpt.repsonse_generator.load_response_generator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.repsonse_generator.load_response_generator</span></code></a>(llm)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="autonomous_agents/langchain_experimental.autonomous_agents.hugginggpt.task_planner.load_chat_planner.html#langchain_experimental.autonomous_agents.hugginggpt.task_planner.load_chat_planner" title="langchain_experimental.autonomous_agents.hugginggpt.task_planner.load_chat_planner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">autonomous_agents.hugginggpt.task_planner.load_chat_planner</span></code></a>(llm)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.comprehend_moderation">
+<span id="langchain-experimental-comprehend-moderation"></span><h2><a class="reference internal" href="#module-langchain_experimental.comprehend_moderation" title="langchain_experimental.comprehend_moderation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.comprehend_moderation</span></code></a><a class="headerlink" href="#module-langchain_experimental.comprehend_moderation" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>Classes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.amazon_comprehend_moderation.AmazonComprehendModerationChain.html#langchain_experimental.comprehend_moderation.amazon_comprehend_moderation.AmazonComprehendModerationChain" title="langchain_experimental.comprehend_moderation.amazon_comprehend_moderation.AmazonComprehendModerationChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.amazon_comprehend_moderation.AmazonComprehendModerationChain</span></code></a></p></td>
+<td><p>A subclass of Chain, designed to apply moderation to LLMs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation.BaseModeration.html#langchain_experimental.comprehend_moderation.base_moderation.BaseModeration" title="langchain_experimental.comprehend_moderation.base_moderation.BaseModeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation.BaseModeration</span></code></a>(client)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_callbacks.BaseModerationCallbackHandler.html#langchain_experimental.comprehend_moderation.base_moderation_callbacks.BaseModerationCallbackHandler" title="langchain_experimental.comprehend_moderation.base_moderation_callbacks.BaseModerationCallbackHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_callbacks.BaseModerationCallbackHandler</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_config.BaseModerationConfig.html#langchain_experimental.comprehend_moderation.base_moderation_config.BaseModerationConfig" title="langchain_experimental.comprehend_moderation.base_moderation_config.BaseModerationConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_config.BaseModerationConfig</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_config.ModerationIntentConfig.html#langchain_experimental.comprehend_moderation.base_moderation_config.ModerationIntentConfig" title="langchain_experimental.comprehend_moderation.base_moderation_config.ModerationIntentConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_config.ModerationIntentConfig</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_config.ModerationPiiConfig.html#langchain_experimental.comprehend_moderation.base_moderation_config.ModerationPiiConfig" title="langchain_experimental.comprehend_moderation.base_moderation_config.ModerationPiiConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_config.ModerationPiiConfig</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_config.ModerationToxicityConfig.html#langchain_experimental.comprehend_moderation.base_moderation_config.ModerationToxicityConfig" title="langchain_experimental.comprehend_moderation.base_moderation_config.ModerationToxicityConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_config.ModerationToxicityConfig</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationIntentionError.html#langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationIntentionError" title="langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationIntentionError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_exceptions.ModerationIntentionError</span></code></a>([...])</p></td>
+<td><p>Exception raised if Intention entities are detected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationPiiError.html#langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationPiiError" title="langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationPiiError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_exceptions.ModerationPiiError</span></code></a>([...])</p></td>
+<td><p>Exception raised if PII entities are detected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationToxicityError.html#langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationToxicityError" title="langchain_experimental.comprehend_moderation.base_moderation_exceptions.ModerationToxicityError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.base_moderation_exceptions.ModerationToxicityError</span></code></a>([...])</p></td>
+<td><p>Exception raised if Toxic entities are detected.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.intent.ComprehendIntent.html#langchain_experimental.comprehend_moderation.intent.ComprehendIntent" title="langchain_experimental.comprehend_moderation.intent.ComprehendIntent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.intent.ComprehendIntent</span></code></a>(client)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.pii.ComprehendPII.html#langchain_experimental.comprehend_moderation.pii.ComprehendPII" title="langchain_experimental.comprehend_moderation.pii.ComprehendPII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.pii.ComprehendPII</span></code></a>(client)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="comprehend_moderation/langchain_experimental.comprehend_moderation.toxicity.ComprehendToxicity.html#langchain_experimental.comprehend_moderation.toxicity.ComprehendToxicity" title="langchain_experimental.comprehend_moderation.toxicity.ComprehendToxicity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">comprehend_moderation.toxicity.ComprehendToxicity</span></code></a>(client)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.cpal">
+<span id="langchain-experimental-cpal"></span><h2><a class="reference internal" href="#module-langchain_experimental.cpal" title="langchain_experimental.cpal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.cpal</span></code></a><a class="headerlink" href="#module-langchain_experimental.cpal" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h3>Classes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="cpal/langchain_experimental.cpal.constants.Constant.html#langchain_experimental.cpal.constants.Constant" title="langchain_experimental.cpal.constants.Constant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cpal.constants.Constant</span></code></a>(value[, names, ...])</p></td>
+<td><p>Enum for constants used in the CPAL.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="langchain-experimental-data-anonymizer">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.data_anonymizer</span></code><a class="headerlink" href="#langchain-experimental-data-anonymizer" title="Permalink to this headline">¶</a></h2>
+<section id="id3">
+<h3>Classes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="data_anonymizer/langchain_experimental.data_anonymizer.base.AnonymizerBase.html#langchain_experimental.data_anonymizer.base.AnonymizerBase" title="langchain_experimental.data_anonymizer.base.AnonymizerBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_anonymizer.base.AnonymizerBase</span></code></a>()</p></td>
+<td><p>Base abstract class for anonymizers. It is public and non-virtual because it allows     wrapping the behavior for all methods in a base class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="data_anonymizer/langchain_experimental.data_anonymizer.base.ReversibleAnonymizerBase.html#langchain_experimental.data_anonymizer.base.ReversibleAnonymizerBase" title="langchain_experimental.data_anonymizer.base.ReversibleAnonymizerBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_anonymizer.base.ReversibleAnonymizerBase</span></code></a>()</p></td>
+<td><p>Base abstract class for reversible anonymizers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="data_anonymizer/langchain_experimental.data_anonymizer.deanonymizer_mapping.DeanonymizerMapping.html#langchain_experimental.data_anonymizer.deanonymizer_mapping.DeanonymizerMapping" title="langchain_experimental.data_anonymizer.deanonymizer_mapping.DeanonymizerMapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_anonymizer.deanonymizer_mapping.DeanonymizerMapping</span></code></a>(...)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3>Functions<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="data_anonymizer/langchain_experimental.data_anonymizer.faker_presidio_mapping.get_pseudoanonymizer_mapping.html#langchain_experimental.data_anonymizer.faker_presidio_mapping.get_pseudoanonymizer_mapping" title="langchain_experimental.data_anonymizer.faker_presidio_mapping.get_pseudoanonymizer_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">data_anonymizer.faker_presidio_mapping.get_pseudoanonymizer_mapping</span></code></a>([seed])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.fallacy_removal">
+<span id="langchain-experimental-fallacy-removal"></span><h2><a class="reference internal" href="#module-langchain_experimental.fallacy_removal" title="langchain_experimental.fallacy_removal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.fallacy_removal</span></code></a><a class="headerlink" href="#module-langchain_experimental.fallacy_removal" title="Permalink to this headline">¶</a></h2>
+<p>The Chain runs a self-review of logical fallacies as determined by this paper  categorizing and defining logical fallacies <a class="reference external" href="https://arxiv.org/pdf/2212.07425.pdf">https://arxiv.org/pdf/2212.07425.pdf</a>. Modeled after Constitutional AI and in same format, but applying logical fallacies as generalized rules to remove in output</p>
+<section id="id5">
+<h3>Classes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="fallacy_removal/langchain_experimental.fallacy_removal.base.FallacyChain.html#langchain_experimental.fallacy_removal.base.FallacyChain" title="langchain_experimental.fallacy_removal.base.FallacyChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fallacy_removal.base.FallacyChain</span></code></a></p></td>
+<td><p>Chain for applying logical fallacy evaluations, modeled after Constitutional AI     and in same format, but applying logical fallacies as generalized rules to remove     in output</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="fallacy_removal/langchain_experimental.fallacy_removal.models.LogicalFallacy.html#langchain_experimental.fallacy_removal.models.LogicalFallacy" title="langchain_experimental.fallacy_removal.models.LogicalFallacy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fallacy_removal.models.LogicalFallacy</span></code></a></p></td>
+<td><p>Class for a logical fallacy.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.generative_agents">
+<span id="langchain-experimental-generative-agents"></span><h2><a class="reference internal" href="#module-langchain_experimental.generative_agents" title="langchain_experimental.generative_agents"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.generative_agents</span></code></a><a class="headerlink" href="#module-langchain_experimental.generative_agents" title="Permalink to this headline">¶</a></h2>
+<p>Generative Agents primitives.</p>
+<section id="id6">
+<h3>Classes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generative_agents/langchain_experimental.generative_agents.generative_agent.GenerativeAgent.html#langchain_experimental.generative_agents.generative_agent.GenerativeAgent" title="langchain_experimental.generative_agents.generative_agent.GenerativeAgent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generative_agents.generative_agent.GenerativeAgent</span></code></a></p></td>
+<td><p>An Agent as a character with memory and innate characteristics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generative_agents/langchain_experimental.generative_agents.memory.GenerativeAgentMemory.html#langchain_experimental.generative_agents.memory.GenerativeAgentMemory" title="langchain_experimental.generative_agents.memory.GenerativeAgentMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generative_agents.memory.GenerativeAgentMemory</span></code></a></p></td>
+<td><p>Memory for the generative agent.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.graph_transformers">
+<span id="langchain-experimental-graph-transformers"></span><h2><a class="reference internal" href="#module-langchain_experimental.graph_transformers" title="langchain_experimental.graph_transformers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.graph_transformers</span></code></a><a class="headerlink" href="#module-langchain_experimental.graph_transformers" title="Permalink to this headline">¶</a></h2>
+<section id="id7">
+<h3>Classes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="graph_transformers/langchain_experimental.graph_transformers.diffbot.DiffbotGraphTransformer.html#langchain_experimental.graph_transformers.diffbot.DiffbotGraphTransformer" title="langchain_experimental.graph_transformers.diffbot.DiffbotGraphTransformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_transformers.diffbot.DiffbotGraphTransformer</span></code></a>([...])</p></td>
+<td><p>Transforms documents into graph documents using Diffbot's NLP API.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="graph_transformers/langchain_experimental.graph_transformers.diffbot.NodesList.html#langchain_experimental.graph_transformers.diffbot.NodesList" title="langchain_experimental.graph_transformers.diffbot.NodesList"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_transformers.diffbot.NodesList</span></code></a>()</p></td>
+<td><p>Manages a list of nodes with associated properties.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="graph_transformers/langchain_experimental.graph_transformers.diffbot.SimplifiedSchema.html#langchain_experimental.graph_transformers.diffbot.SimplifiedSchema" title="langchain_experimental.graph_transformers.diffbot.SimplifiedSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_transformers.diffbot.SimplifiedSchema</span></code></a>()</p></td>
+<td><p>Provides functionality for working with a simplified schema mapping.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3>Functions<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="graph_transformers/langchain_experimental.graph_transformers.diffbot.format_property_key.html#langchain_experimental.graph_transformers.diffbot.format_property_key" title="langchain_experimental.graph_transformers.diffbot.format_property_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_transformers.diffbot.format_property_key</span></code></a>(s)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.llms">
+<span id="langchain-experimental-llms"></span><h2><a class="reference internal" href="#module-langchain_experimental.llms" title="langchain_experimental.llms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.llms</span></code></a><a class="headerlink" href="#module-langchain_experimental.llms" title="Permalink to this headline">¶</a></h2>
+<p>Experimental LLM wrappers.</p>
+<section id="id9">
+<h3>Classes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.anthropic_functions.AnthropicFunctions.html#langchain_experimental.llms.anthropic_functions.AnthropicFunctions" title="langchain_experimental.llms.anthropic_functions.AnthropicFunctions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.anthropic_functions.AnthropicFunctions</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.anthropic_functions.TagParser.html#langchain_experimental.llms.anthropic_functions.TagParser" title="langchain_experimental.llms.anthropic_functions.TagParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.anthropic_functions.TagParser</span></code></a>()</p></td>
+<td><p>A heavy-handed solution, but it's fast for prototyping.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.jsonformer_decoder.JsonFormer.html#langchain_experimental.llms.jsonformer_decoder.JsonFormer" title="langchain_experimental.llms.jsonformer_decoder.JsonFormer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.jsonformer_decoder.JsonFormer</span></code></a></p></td>
+<td><p>Jsonformer wrapped LLM using HuggingFace Pipeline API.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.llamaapi.ChatLlamaAPI.html#langchain_experimental.llms.llamaapi.ChatLlamaAPI" title="langchain_experimental.llms.llamaapi.ChatLlamaAPI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.llamaapi.ChatLlamaAPI</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.rellm_decoder.RELLM.html#langchain_experimental.llms.rellm_decoder.RELLM" title="langchain_experimental.llms.rellm_decoder.RELLM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.rellm_decoder.RELLM</span></code></a></p></td>
+<td><p>RELLM wrapped LLM using HuggingFace Pipeline API.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3>Functions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.jsonformer_decoder.import_jsonformer.html#langchain_experimental.llms.jsonformer_decoder.import_jsonformer" title="langchain_experimental.llms.jsonformer_decoder.import_jsonformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.jsonformer_decoder.import_jsonformer</span></code></a>()</p></td>
+<td><p>Lazily import jsonformer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="llms/langchain_experimental.llms.rellm_decoder.import_rellm.html#langchain_experimental.llms.rellm_decoder.import_rellm" title="langchain_experimental.llms.rellm_decoder.import_rellm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">llms.rellm_decoder.import_rellm</span></code></a>()</p></td>
+<td><p>Lazily import rellm.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.pal_chain">
+<span id="langchain-experimental-pal-chain"></span><h2><a class="reference internal" href="#module-langchain_experimental.pal_chain" title="langchain_experimental.pal_chain"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.pal_chain</span></code></a><a class="headerlink" href="#module-langchain_experimental.pal_chain" title="Permalink to this headline">¶</a></h2>
+<p>Implements Program-Aided Language Models.</p>
+<p>As in <a class="reference external" href="https://arxiv.org/pdf/2211.10435.pdf">https://arxiv.org/pdf/2211.10435.pdf</a>.</p>
+<p>This is vulnerable to arbitrary code execution:
+<a class="reference external" href="https://github.com/hwchase17/langchain/issues/5872">https://github.com/hwchase17/langchain/issues/5872</a></p>
+<section id="id11">
+<h3>Classes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pal_chain/langchain_experimental.pal_chain.base.PALChain.html#langchain_experimental.pal_chain.base.PALChain" title="langchain_experimental.pal_chain.base.PALChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pal_chain.base.PALChain</span></code></a></p></td>
+<td><p>Implements Program-Aided Language Models (PAL).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pal_chain/langchain_experimental.pal_chain.base.PALValidation.html#langchain_experimental.pal_chain.base.PALValidation" title="langchain_experimental.pal_chain.base.PALValidation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pal_chain.base.PALValidation</span></code></a>([...])</p></td>
+<td><p>Initialize a PALValidation instance.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.plan_and_execute">
+<span id="langchain-experimental-plan-and-execute"></span><h2><a class="reference internal" href="#module-langchain_experimental.plan_and_execute" title="langchain_experimental.plan_and_execute"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.plan_and_execute</span></code></a><a class="headerlink" href="#module-langchain_experimental.plan_and_execute" title="Permalink to this headline">¶</a></h2>
+<section id="id12">
+<h3>Classes<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.agent_executor.PlanAndExecute.html#langchain_experimental.plan_and_execute.agent_executor.PlanAndExecute" title="langchain_experimental.plan_and_execute.agent_executor.PlanAndExecute"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.agent_executor.PlanAndExecute</span></code></a></p></td>
+<td><p>Plan and execute a chain of steps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.executors.base.BaseExecutor.html#langchain_experimental.plan_and_execute.executors.base.BaseExecutor" title="langchain_experimental.plan_and_execute.executors.base.BaseExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.executors.base.BaseExecutor</span></code></a></p></td>
+<td><p>Base executor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.executors.base.ChainExecutor.html#langchain_experimental.plan_and_execute.executors.base.ChainExecutor" title="langchain_experimental.plan_and_execute.executors.base.ChainExecutor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.executors.base.ChainExecutor</span></code></a></p></td>
+<td><p>Chain executor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.planners.base.BasePlanner.html#langchain_experimental.plan_and_execute.planners.base.BasePlanner" title="langchain_experimental.plan_and_execute.planners.base.BasePlanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.planners.base.BasePlanner</span></code></a></p></td>
+<td><p>Base planner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.planners.base.LLMPlanner.html#langchain_experimental.plan_and_execute.planners.base.LLMPlanner" title="langchain_experimental.plan_and_execute.planners.base.LLMPlanner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.planners.base.LLMPlanner</span></code></a></p></td>
+<td><p>LLM planner.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.planners.chat_planner.PlanningOutputParser.html#langchain_experimental.plan_and_execute.planners.chat_planner.PlanningOutputParser" title="langchain_experimental.plan_and_execute.planners.chat_planner.PlanningOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.planners.chat_planner.PlanningOutputParser</span></code></a></p></td>
+<td><p>Planning output parser.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.BaseStepContainer.html#langchain_experimental.plan_and_execute.schema.BaseStepContainer" title="langchain_experimental.plan_and_execute.schema.BaseStepContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.BaseStepContainer</span></code></a></p></td>
+<td><p>Base step container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.ListStepContainer.html#langchain_experimental.plan_and_execute.schema.ListStepContainer" title="langchain_experimental.plan_and_execute.schema.ListStepContainer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.ListStepContainer</span></code></a></p></td>
+<td><p>List step container.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.Plan.html#langchain_experimental.plan_and_execute.schema.Plan" title="langchain_experimental.plan_and_execute.schema.Plan"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.Plan</span></code></a></p></td>
+<td><p>Plan.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.PlanOutputParser.html#langchain_experimental.plan_and_execute.schema.PlanOutputParser" title="langchain_experimental.plan_and_execute.schema.PlanOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.PlanOutputParser</span></code></a></p></td>
+<td><p>Plan output parser.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.Step.html#langchain_experimental.plan_and_execute.schema.Step" title="langchain_experimental.plan_and_execute.schema.Step"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.Step</span></code></a></p></td>
+<td><p>Step.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.schema.StepResponse.html#langchain_experimental.plan_and_execute.schema.StepResponse" title="langchain_experimental.plan_and_execute.schema.StepResponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.schema.StepResponse</span></code></a></p></td>
+<td><p>Step response.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id13">
+<h3>Functions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.executors.agent_executor.load_agent_executor.html#langchain_experimental.plan_and_execute.executors.agent_executor.load_agent_executor" title="langchain_experimental.plan_and_execute.executors.agent_executor.load_agent_executor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.executors.agent_executor.load_agent_executor</span></code></a>(...)</p></td>
+<td><p>Load an agent executor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="plan_and_execute/langchain_experimental.plan_and_execute.planners.chat_planner.load_chat_planner.html#langchain_experimental.plan_and_execute.planners.chat_planner.load_chat_planner" title="langchain_experimental.plan_and_execute.planners.chat_planner.load_chat_planner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plan_and_execute.planners.chat_planner.load_chat_planner</span></code></a>(llm)</p></td>
+<td><p>Load a chat planner.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.prompt_injection_identifier">
+<span id="langchain-experimental-prompt-injection-identifier"></span><h2><a class="reference internal" href="#module-langchain_experimental.prompt_injection_identifier" title="langchain_experimental.prompt_injection_identifier"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.prompt_injection_identifier</span></code></a><a class="headerlink" href="#module-langchain_experimental.prompt_injection_identifier" title="Permalink to this headline">¶</a></h2>
+<p>HuggingFace Security toolkit.</p>
+<section id="id14">
+<h3>Classes<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="prompt_injection_identifier/langchain_experimental.prompt_injection_identifier.hugging_face_identifier.HuggingFaceInjectionIdentifier.html#langchain_experimental.prompt_injection_identifier.hugging_face_identifier.HuggingFaceInjectionIdentifier" title="langchain_experimental.prompt_injection_identifier.hugging_face_identifier.HuggingFaceInjectionIdentifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prompt_injection_identifier.hugging_face_identifier.HuggingFaceInjectionIdentifier</span></code></a></p></td>
+<td><p>Tool that uses deberta-v3-base-injection to detect prompt injection attacks.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3>Functions<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.smart_llm">
+<span id="langchain-experimental-smart-llm"></span><h2><a class="reference internal" href="#module-langchain_experimental.smart_llm" title="langchain_experimental.smart_llm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.smart_llm</span></code></a><a class="headerlink" href="#module-langchain_experimental.smart_llm" title="Permalink to this headline">¶</a></h2>
+<p>Generalized implementation of SmartGPT (origin: <a class="reference external" href="https://youtu.be/wVzuvf9D9BU">https://youtu.be/wVzuvf9D9BU</a>)</p>
+<section id="id16">
+<h3>Classes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="smart_llm/langchain_experimental.smart_llm.base.SmartLLMChain.html#langchain_experimental.smart_llm.base.SmartLLMChain" title="langchain_experimental.smart_llm.base.SmartLLMChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">smart_llm.base.SmartLLMChain</span></code></a></p></td>
+<td><p>Generalized implementation of SmartGPT (origin: <a class="reference external" href="https://youtu.be/wVzuvf9D9BU">https://youtu.be/wVzuvf9D9BU</a>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.sql">
+<span id="langchain-experimental-sql"></span><h2><a class="reference internal" href="#module-langchain_experimental.sql" title="langchain_experimental.sql"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.sql</span></code></a><a class="headerlink" href="#module-langchain_experimental.sql" title="Permalink to this headline">¶</a></h2>
+<p>Chain for interacting with SQL Database.</p>
+<section id="id17">
+<h3>Classes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="sql/langchain_experimental.sql.base.SQLDatabaseChain.html#langchain_experimental.sql.base.SQLDatabaseChain" title="langchain_experimental.sql.base.SQLDatabaseChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sql.base.SQLDatabaseChain</span></code></a></p></td>
+<td><p>Chain for interacting with SQL Database.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sql/langchain_experimental.sql.base.SQLDatabaseSequentialChain.html#langchain_experimental.sql.base.SQLDatabaseSequentialChain" title="langchain_experimental.sql.base.SQLDatabaseSequentialChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sql.base.SQLDatabaseSequentialChain</span></code></a></p></td>
+<td><p>Chain for querying SQL database that is a sequential chain.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-langchain_experimental.tot">
+<span id="langchain-experimental-tot"></span><h2><a class="reference internal" href="#module-langchain_experimental.tot" title="langchain_experimental.tot"><code class="xref py py-mod docutils literal notranslate"><span class="pre">langchain_experimental.tot</span></code></a><a class="headerlink" href="#module-langchain_experimental.tot" title="Permalink to this headline">¶</a></h2>
+<section id="id18">
+<h3>Classes<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.base.ToTChain.html#langchain_experimental.tot.base.ToTChain" title="langchain_experimental.tot.base.ToTChain"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.base.ToTChain</span></code></a></p></td>
+<td><p>A Chain implementing the Tree of Thought (ToT).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.checker.ToTChecker.html#langchain_experimental.tot.checker.ToTChecker" title="langchain_experimental.tot.checker.ToTChecker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.checker.ToTChecker</span></code></a></p></td>
+<td><p>Tree of Thought (ToT) checker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.controller.ToTController.html#langchain_experimental.tot.controller.ToTController" title="langchain_experimental.tot.controller.ToTController"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.controller.ToTController</span></code></a>([c])</p></td>
+<td><p>Tree of Thought (ToT) controller.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.memory.ToTDFSMemory.html#langchain_experimental.tot.memory.ToTDFSMemory" title="langchain_experimental.tot.memory.ToTDFSMemory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.memory.ToTDFSMemory</span></code></a>([stack])</p></td>
+<td><p>Memory for the Tree of Thought (ToT) chain.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.prompts.CheckerOutputParser.html#langchain_experimental.tot.prompts.CheckerOutputParser" title="langchain_experimental.tot.prompts.CheckerOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.prompts.CheckerOutputParser</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.prompts.JSONListOutputParser.html#langchain_experimental.tot.prompts.JSONListOutputParser" title="langchain_experimental.tot.prompts.JSONListOutputParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.prompts.JSONListOutputParser</span></code></a></p></td>
+<td><p>Class to parse the output of a PROPOSE_PROMPT response.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.thought.Thought.html#langchain_experimental.tot.thought.Thought" title="langchain_experimental.tot.thought.Thought"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.thought.Thought</span></code></a></p></td>
+<td><p>Create a new model by parsing and validating input data from keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.thought.ThoughtValidity.html#langchain_experimental.tot.thought.ThoughtValidity" title="langchain_experimental.tot.thought.ThoughtValidity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.thought.ThoughtValidity</span></code></a>(value[, names, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.thought_generation.BaseThoughtGenerationStrategy.html#langchain_experimental.tot.thought_generation.BaseThoughtGenerationStrategy" title="langchain_experimental.tot.thought_generation.BaseThoughtGenerationStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.thought_generation.BaseThoughtGenerationStrategy</span></code></a></p></td>
+<td><p>Base class for a thought generation strategy.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.thought_generation.ProposePromptStrategy.html#langchain_experimental.tot.thought_generation.ProposePromptStrategy" title="langchain_experimental.tot.thought_generation.ProposePromptStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.thought_generation.ProposePromptStrategy</span></code></a></p></td>
+<td><p>Propose thoughts sequentially using a &quot;propose prompt&quot;.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tot/langchain_experimental.tot.thought_generation.SampleCoTStrategy.html#langchain_experimental.tot.thought_generation.SampleCoTStrategy" title="langchain_experimental.tot.thought_generation.SampleCoTStrategy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tot.thought_generation.SampleCoTStrategy</span></code></a></p></td>
+<td><p>Sample thoughts from a Chain-of-Thought (CoT) prompt.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+      </div>
+    <div class="container">
+      <footer class="sk-content-footer">
+            &copy; 2023, Harrison Chase.
+          Last updated on Sep 22, 2023.
+          <a href="_sources/experimental_api_reference.rst.txt" rel="nofollow">Show this page source</a>
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="_static/js/vendor/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    /* Add a [>>>] button on the top-right corner of code samples to hide
+     * the >>> and ... prompts and the output and thus make the code
+     * copyable. */
+    var div = $('.highlight-python .highlight,' +
+                '.highlight-python3 .highlight,' +
+                '.highlight-pycon .highlight,' +
+		'.highlight-default .highlight')
+    var pre = div.find('pre');
+
+    // get the styles from the current theme
+    pre.parent().parent().css('position', 'relative');
+    var hide_text = 'Hide prompts and outputs';
+    var show_text = 'Show prompts and outputs';
+
+    // create and add the button to all the code blocks that contain >>>
+    div.each(function(index) {
+        var jthis = $(this);
+        if (jthis.find('.gp').length > 0) {
+            var button = $('<span class="copybutton">&gt;&gt;&gt;</span>');
+            button.attr('title', hide_text);
+            button.data('hidden', 'false');
+            jthis.prepend(button);
+        }
+        // tracebacks (.gt) contain bare text elements that need to be
+        // wrapped in a span to work with .nextUntil() (see later)
+        jthis.find('pre:has(.gt)').contents().filter(function() {
+            return ((this.nodeType == 3) && (this.data.trim().length > 0));
+        }).wrap('<span>');
+    });
+
+    // define the behavior of the button when it's clicked
+    $('.copybutton').click(function(e){
+        e.preventDefault();
+        var button = $(this);
+        if (button.data('hidden') === 'false') {
+            // hide the code output
+            button.parent().find('.go, .gp, .gt').hide();
+            button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+            button.css('text-decoration', 'line-through');
+            button.attr('title', show_text);
+            button.data('hidden', 'true');
+        } else {
+            // show the code output
+            button.parent().find('.go, .gp, .gt').show();
+            button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+            button.css('text-decoration', 'none');
+            button.attr('title', hide_text);
+            button.data('hidden', 'false');
+        }
+    });
+
+	/*** Add permalink buttons next to glossary terms ***/
+	$('dl.glossary > dt[id]').append(function() {
+		return ('<a class="headerlink" href="#' +
+			    this.getAttribute('id') +
+			    '" title="Permalink to this term">¶</a>');
+	});
+});
+
+</script>
+    
+</body>
+</html>

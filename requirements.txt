@@ -1,0 +1,2 @@
+langchain~=0.0.295
+requests~=2.31.0
