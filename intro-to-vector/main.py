@@ -5,6 +5,12 @@ from streamlit_chat import message
 from PIL import Image
 from streamlit_cropper import st_cropper
 import numpy as np
+import cv2
+
+from roboflow import Roboflow
+rf = Roboflow(api_key="jPnk3SftEgcEmCcfhN0F")
+project = rf.workspace().project("chirag-s3e7s/tshirt-evfwv")
+model = project.version(4).model
 
 st.header("Ice breaker Helper Bot")
 #st.session_state.widget = ''
@@ -21,6 +27,16 @@ def submit():
         print(generated_response)
         st.session_state["user_prompt_history"].append(cust_query)
         st.session_state["chat_answers_history"].append(generated_response)
+
+
+def get_scaled_cropped_img(raw_image, top, left, height, width, scale):
+    img_height, img_width, img_channels = raw_image.shape
+    top_2x = 0 if top - height < 0 else top - height
+    bottom_2x = img_height if top + scale * height > img_height else top + scale * height
+    left_2x = 0 if left - width < 0 else left - width
+    right_2x = img_width if left + scale * width > img_width else left + scale* width
+    cropped_image_2x = raw_image[top_2x:bottom_2x, left_2x:right_2x]
+    return cropped_image_2x
 
 
 st.text_input("Prompt", key = "widget", placeholder = "Enter your prompt here ..", on_change = submit)
@@ -70,9 +86,19 @@ if img_file:
         left, top, width, height = tuple(map(int, rect.values()))
         print("left: " + str(left) + "top: " + str(top) + "width: " + str(width) + "height: " + str(height))
         st.write(rect)
-        masked_image = np.zeros(raw_image.shape, dtype='uint8')
-        masked_image[top- 1000:top + height + 1000, left - 1000:left + width + 1000] = raw_image[top- 1000:top + height + 1000 , left - 1000:left + width + 1000]
-        st.image(Image.fromarray(masked_image), caption='masked image', width=400)
+        cv2.rectangle(raw_image, (left, top), (left + width, top + height), (0, 255, 0), thickness=2)
+        masked_image_x = raw_image[top:top + height , left:left + width]
+        masked_image_2x = get_scaled_cropped_img(raw_image, top, left, height, width, 2)
+        masked_image_3x = get_scaled_cropped_img(raw_image, top, left, height, width, 3)
+        #masked_image_x[top: top + height, left:left + width] = raw_image[top:top + height , left:left + width]
+        st.image(Image.fromarray(raw_image), caption='raw image x')
+        st.image(Image.fromarray(masked_image_x), caption='masked image x')
+        st.image(Image.fromarray(masked_image_2x), caption='masked image 2x')
+        cv2.imwrite('masked_image_2x.jpg', masked_image_2x)
+        model.predict("masked_image_2x.jpg", confidence=40, overlap=30).save("prediction.jpg")
+        st.image(Image.fromarray(masked_image_3x), caption='masked image 3x')
+        cv2.imwrite('masked_image_3x.jpg', masked_image_3x)
+
     else:
         # Get a cropped image from the frontend
         cropped_img = st_cropper(
@@ -88,6 +114,10 @@ if img_file:
         st.write("Preview")
         _ = cropped_img.thumbnail((150, 150))
         st.image(cropped_img,  width=250)
+
+
+
+
 
 
 
