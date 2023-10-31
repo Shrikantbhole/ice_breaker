@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 langchain = "*"
+streamlit = "*"
 
 [dev-packages]
 

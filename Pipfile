@@ -17,6 +17,7 @@ tiktoken = "*"
 streamlit-chat = "*"
 streamlit = "*"
 streamlit-cropper = "*"
+transformers = "*"
 
 [dev-packages]
 

@@ -11,6 +11,7 @@ from langchain.chains import ConversationChain
 from langchain import PromptTemplate
 from langchain import FewShotPromptTemplate
 
+
 # ------------------------------------- USING LANGCHAIN CONVERSATION CHAIN -----------------------------------------------
 
 
@@ -94,7 +95,12 @@ examples = [
     {
 
         "query": "the tshirt has a hole of a size of coin near the sleeve",
-        "answer": "Thanks . I have noted your query. tshirt-defect-hole"
+        "answer": "Thanks . Please let me know If I have understood your concern correctly. The t-shirt you bought has quality issue because it has a hole inside it. Noting down the query  : Quality issue - hole"
+    },
+
+    {
+        "query": "Well. I am not sure if you understood correctly, but yes we can proceed with this understanding",
+        "answer":"Great! Can you please upload image of your tshirt  and select the area in your tshirt where the hole is present"
     },
     {
 
@@ -107,12 +113,21 @@ examples = [
     },
     {
         "query": "the pant length is 41 cm while I expected it to 39 sm",
-        "answer": "Thanks . I have noted your query. tshirt-dimension-length"
+        "answer": "Thanks . Please let me know If I have understood your concern correctly. The pant you bought has sizing issue because its size is 41 cm when actual size should be 39 cm. Noting down the query: Sizing issue - oversize"
     },
     {
-        "query": "i just got a jacket from your site and it seems that it has two of the buttons in the top missing",
-        "answer": "Thanks . I have noted your query. jacket-missing-buttons"
+        "query": "I think you more or less got the point",
+        "answer": "Great! Can you please upload image of your pant where the length of pant is clearly visible"
+    },
+    {
+        "query": "I just got a jacket from your site and it seems that it has two of the buttons in the top missing",
+        "answer": "Thanks .  Please let me know If I have understood your concern correctly. The jacket you bought have missing parts issue because some of the buttons are missing. Noting down the query: jacket-missing-buttons"
+    },
+    {
+        "query": "You have understood the query correctly",
+        "answer": "Great! Can you please upload image of your jacket and select the area in your tshirt where the buttons are missing"
     }
+
 ]
 
 # create a example template
