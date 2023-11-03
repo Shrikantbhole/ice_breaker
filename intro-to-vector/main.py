@@ -9,25 +9,34 @@ import cv2
 
 from roboflow import Roboflow
 from roboflow_inference import model_img_prediction, model_json_prediction, Box, calculate_iou, \
-    generate_response_based_upon_result, yolo_chirag, yolo_tushar, get_iou_input_and_iou_predicted
+    generate_response_based_upon_result, yolo_chirag, yolo_tushar, get_iou_input_and_iou_predicted, yolo_shrikant, model_json_prediction_size
 
 
 st.header("Ice breaker Helper Bot")
 # st.session_state.widget = ''
 i = 45
-print("Hellooooooooo")
+
 if "user_prompt_history" not in st.session_state:
     st.session_state["user_prompt_history"] = []
 if "chat_answers_history" not in st.session_state:
     st.session_state["chat_answers_history"] = []
+if "issue" not in st.session_state:
+    st.session_state.issue = 'sizing'
 
 
-def submit():
+def submit(elseif=None):
     with st.spinner("Generating response...."):
         print("Session State " + str(st.session_state))
         cust_query = st.session_state.widget
         generated_response = run_llm(query=cust_query)
         print(generated_response)
+        if "Sizing Issue" in str(generated_response):
+            st.session_state.issue = 'sizing'
+            print("Session State: " + str(st.session_state.issue))
+        elif "Quality Issue" in str(generated_response):
+            st.session_state.issue = 'quality'
+            print("Session State: " + str(st.session_state.issue))
+            
         st.session_state["user_prompt_history"].append(cust_query)
         st.session_state["chat_answers_history"].append(generated_response)
 
@@ -52,7 +61,7 @@ img_file = st.sidebar.file_uploader(label='Upload a file', type=['png', 'jpg'], 
 realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True, key=2)
 box_color = st.sidebar.color_picker(label="Box Color", value='#0000FF', key=3)
 stroke_width = st.sidebar.number_input(label="Box Thickness", value=3, step=1)
-scale = st.sidebar.number_input(label="Crop Scale", value=2, step=1)
+scale_input = st.sidebar.number_input(label="Crop Scale", value=2, step=1)
 model = st.sidebar.radio(label="Select Model", options=["blue", "green"], key=4)
 
 # return_type_choice = st.sidebar.radio(label="Return type", options=["Cropped image", "Rect coords"])
@@ -92,25 +101,34 @@ if img_file:
         stroke_width=stroke_width
     )
     if st.button('Submit'):
-        st.session_state["user_prompt_history"] = []
-        st.session_state["chat_answers_history"] = []
-        st.write('We are working on your query. Please wait.')
+        print("Session State: " + str(st.session_state))
+        if st.session_state.issue == "sizing":
 
-        raw_image = np.asarray(img).astype('uint8')
-        left, top, width, height = tuple(map(int, rect.values()))
-        input_box = Box(
-            x=left,
-            y=top,
-            width=width,
-            height=height
-        )
-        scaled_cropped_img = get_scaled_cropped_img(raw_image, top, left, height, width, scale)
-        bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
-        cv2.imwrite('scaled_cropped_img.jpg', bgr_image)
-        model = yolo_tushar()
-        iou_input, iou_predicted = get_iou_input_and_iou_predicted(model, input_box)
-        result, generated_response = generate_response_based_upon_result(iou_input, iou_predicted)
-        message(generated_response, key=i.__str__())
+            raw_image = np.asarray(img).astype('uint8')
+            bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
+            cv2.imwrite('sizing_img.jpg', bgr_image)
+            model_json_prediction_size(yolo_shrikant(), "sizing_img.jpg" )
+        if st.session_state.issue == "quality":
+            print("Session State: " + str(st.session_state))
+            st.session_state["user_prompt_history"] = []
+            st.session_state["chat_answers_history"] = []
+            st.write('We are working on your query. Please wait.')
+
+            raw_image = np.asarray(img).astype('uint8')
+            left, top, width, height = tuple(map(int, rect.values()))
+            input_box = Box(
+                x=left,
+                y=top,
+                width=width,
+                height=height
+            )
+            scaled_cropped_img = get_scaled_cropped_img(raw_image, top, left, height, width, scale_input)
+            bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
+            cv2.imwrite('scaled_cropped_img.jpg', bgr_image)
+            model = yolo_tushar()
+            iou_input, iou_predicted = get_iou_input_and_iou_predicted(model, input_box)
+            result, generated_response = generate_response_based_upon_result(iou_input, iou_predicted)
+            message(generated_response, key=i.__str__())
 
     if st.button('Retry'):
         st.session_state["user_prompt_history"] = []
@@ -125,7 +143,7 @@ if img_file:
             width=width,
             height=height
         )
-        scaled_cropped_img = get_scaled_cropped_img(raw_image, top, left, height, width, scale)
+        scaled_cropped_img = get_scaled_cropped_img(raw_image, top, left, height, width, scale_input)
         bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
         cv2.imwrite('scaled_cropped_img.jpg', bgr_image)
         model = yolo_chirag()

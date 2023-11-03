@@ -1,7 +1,20 @@
 from roboflow import Roboflow
 from pydantic import BaseModel, Field
+import csv
+import streamlit as st
+import matplotlib.pyplot as plt
 import json
-
+import streamlit as st
+import  numpy as np
+from crawler import build_t_shirt_key_points
+t_shirt_segments = {
+    "5": "t_shirt",
+    "1": "neck",
+    "3": "right_sleeve",
+    "0": "left_sleeve",
+    "4": "seam"
+}
+print(t_shirt_segments["5"])
 
 class Box:
     def __init__(self, x:float, y: float, width: float, height: float):
@@ -11,6 +24,10 @@ class Box:
         self.height = height
 
 
+class Coordinate(BaseModel):
+    x: float
+    y: float
+
 class PredictionItem(BaseModel):
     x: float = Field(description="Left")
     y: float = Field(description="Top")
@@ -19,8 +36,8 @@ class PredictionItem(BaseModel):
     confidence: float
     class_: str = None  # 'class' is a reserved keyword, so we use 'class_' instead
     class_id: int
-    image_path: str
-    prediction_type: str
+    points: list[Coordinate]
+
 
     def create_box(self):
         box = Box(
@@ -39,12 +56,17 @@ class ImageData(BaseModel):
 
 class PredictionsData(BaseModel):
     predictions: list[PredictionItem]
-    image: ImageData
+    #image: ImageData
 
 def yolo_tushar():
     rf = Roboflow(api_key="fDIRWlltWtFjYt8t20bU")
     project = rf.workspace("tushar-x68o7").project("t-shirt-ix6cg")
     return project.version(1).model
+
+def yolo_shrikant():
+    rf = Roboflow(api_key="69wp8k8kVgbQYJYtNh2f")
+    project = rf.workspace("flexli-xgdei").project("t-shirt-segmentation-jb54y")
+    return project.version(2).model
 
 def yolo_chirag():
     rf = Roboflow(api_key="jPnk3SftEgcEmCcfhN0F")
@@ -72,10 +94,60 @@ def model_img_prediction(model, filename: str) -> str:
     model.predict(filename, confidence=4, overlap=30).save("prediction.jpg")
     return "prediction.jpg"
 
+def model_json_prediction_size(model, filename: str) -> any:
+    model_prediction = model.predict(filename, confidence=20).json()
+    print(model_prediction)
+    file_path = "data.txt"
+    with open(file_path, "w") as file:
+        json.dump(model_prediction, file)
+    # Open the file in read mode and load the JSON data
+    with open(file_path, "r") as file:
+        model_prediction = json.load(file)
+
+    predictions_data = PredictionsData.parse_obj(model_prediction)
+    predictions = predictions_data.predictions
+    csv_file_path = "points.csv"
+    x = []
+    y = []
+    t_shirt_contour = []
+    with open(csv_file_path, "w", newline="") as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(["x-coordinate", "y-coordinate", "class"])
+        for prediction in predictions:
+            prediction.class_ = t_shirt_segments[str(prediction.class_id)]
+            for point in prediction.points:
+                csv_writer.writerow([point.x, point.y, prediction.class_])
+                if prediction.class_ == "t_shirt":
+                    x.append(point.x)
+                    y.append(point.y)
+                    t_shirt_contour.append((point.x, point.y))
+    # Create a scatter plot
+    t_shirt_contour = np.array(t_shirt_contour)
+    plt.scatter(x, y)
+
+    # Add labels and a title
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.title('Scatter Plot')
+
+    # Show the plot
+    plt.show()
+    plt.savefig('scatter_plot.png')
+
+    build_t_shirt_key_points(t_shirt_contour, "sizing_img.jpg")
+
+
+
+
+
+
+
+
 
 def model_json_prediction(model, filename: str) -> list[Box]:
     model_prediction = model.predict(filename, confidence=4, overlap=30).json()
     print(model_prediction)
+
     # Parse and validate the JSON data
     predictions_data = PredictionsData.parse_obj(model_prediction)
 

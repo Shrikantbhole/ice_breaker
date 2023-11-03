@@ -95,7 +95,7 @@ examples = [
     {
 
         "query": "the tshirt has a hole of a size of coin near the sleeve",
-        "answer": "Thanks . Please let me know If I have understood your concern correctly. The t-shirt you bought has quality issue because it has a hole inside it. Noting down the query  : Quality issue - hole"
+        "answer": "Thanks . Please let me know If I have understood your concern correctly. The t-shirt you bought has quality issue because it has a hole inside it. Noting down the query  : Quality Issue - hole"
     },
 
     {
@@ -113,7 +113,7 @@ examples = [
     },
     {
         "query": "the pant length is 41 cm while I expected it to 39 sm",
-        "answer": "Thanks . Please let me know If I have understood your concern correctly. The pant you bought has sizing issue because its size is 41 cm when actual size should be 39 cm. Noting down the query: Sizing issue - oversize"
+        "answer": "Thanks . Please let me know If I have understood your concern correctly. The pant you bought has sizing issue because its size is 41 cm when actual size should be 39 cm. Noting down the query: Sizing Issue - oversize"
     },
     {
         "query": "I think you more or less got the point",
@@ -121,7 +121,7 @@ examples = [
     },
     {
         "query": "I just got a jacket from your site and it seems that it has two of the buttons in the top missing",
-        "answer": "Thanks .  Please let me know If I have understood your concern correctly. The jacket you bought have missing parts issue because some of the buttons are missing. Noting down the query: jacket-missing-buttons"
+        "answer": "Thanks .  Please let me know If I have understood your concern correctly. The jacket you bought have missing parts issue because some of the buttons are missing. Noting down the query: Missing Issue - buttons"
     },
     {
         "query": "You have understood the query correctly",
