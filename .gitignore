@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+intro-to-vector/data.txt
+intro-to-vector/Marked_Points.jpg
+intro-to-vector/points.csv
+intro-to-vector/scatter_plot.png
+intro-to-vector/sizing_img.jpg

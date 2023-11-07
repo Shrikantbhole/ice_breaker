@@ -2,19 +2,16 @@ import streamlit as st
 
 from crawler import build_t_shirt_key_points
 from llm_response import run_llm
-import time
 from streamlit_chat import message
 from PIL import Image, ImageOps
 from streamlit_cropper import st_cropper
 import numpy as np
 import cv2
+from add_coin_to_image import add_coin_to_image
 
-
-from roboflow import Roboflow
 
 from rf_sizing_pre_processing import correct_class_for_sleeves, get_corner_coordinates_for_tshirt
-from roboflow_inference import model_img_prediction, model_json_prediction, Box, calculate_iou, \
-    generate_response_based_upon_result,  get_iou_input_and_iou_predicted, model_json_prediction_for_sizing_issue
+from roboflow_inference import model_img_prediction, Box, generate_response_based_upon_result,  get_iou_input_and_iou_predicted, model_json_prediction_for_sizing_issue
 
 
 st.header("Ice breaker Helper Bot")
@@ -75,6 +72,10 @@ model = st.sidebar.radio(label="Select Model", options=["blue", "green"], key=4)
 #    "Rect coords": "box"
 # }
 # return_type = return_type_dict[return_type_choice]
+
+if st.button('Add Coin'):
+    add_coin_to_image.add_coin_to_image()
+
 
 if img_file:
 
