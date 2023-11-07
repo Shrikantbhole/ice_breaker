@@ -1,4 +1,4 @@
-from roboflow import Roboflow
+#from roboflow import Roboflow
 from pydantic import BaseModel, Field
 import csv
 import streamlit as st
@@ -7,14 +7,15 @@ import json
 import streamlit as st
 import  numpy as np
 from crawler import build_t_shirt_key_points
+from models.PredictionItem import PredictionItem
+from rf_sizing_pre_processing import get_gradient_quadrant_for_contour
 t_shirt_segments = {
-    "5": "t_shirt",
+    "4": "t_shirt",
     "1": "neck",
     "3": "right_sleeve",
-    "0": "left_sleeve",
-    "4": "seam"
+    "0": "left_sleeve"
 }
-print(t_shirt_segments["5"])
+
 
 class Box:
     def __init__(self, x:float, y: float, width: float, height: float):
@@ -24,19 +25,9 @@ class Box:
         self.height = height
 
 
-class Coordinate(BaseModel):
-    x: float
-    y: float
 
-class PredictionItem(BaseModel):
-    x: float = Field(description="Left")
-    y: float = Field(description="Top")
-    width: float = Field(description="Width")
-    height: float = Field(description="Height")
-    confidence: float
-    class_: str = None  # 'class' is a reserved keyword, so we use 'class_' instead
-    class_id: int
-    points: list[Coordinate]
+
+
 
 
     def create_box(self):
@@ -58,21 +49,21 @@ class PredictionsData(BaseModel):
     predictions: list[PredictionItem]
     #image: ImageData
 
-def yolo_tushar():
-    rf = Roboflow(api_key="fDIRWlltWtFjYt8t20bU")
-    project = rf.workspace("tushar-x68o7").project("t-shirt-ix6cg")
-    return project.version(1).model
+#def yolo_tushar():
+    # rf = Roboflow(api_key="fDIRWlltWtFjYt8t20bU")
+    #project = rf.workspace("tushar-x68o7").project("t-shirt-ix6cg")
+    #return project.version(1).model
 
-def yolo_shrikant():
-    rf = Roboflow(api_key="69wp8k8kVgbQYJYtNh2f")
-    project = rf.workspace("flexli-xgdei").project("t-shirt-segmentation-jb54y")
-    return project.version(2).model
+#def yolo_shrikant():
+    # rf = Roboflow(api_key="69wp8k8kVgbQYJYtNh2f")
+    #project = rf.workspace("flexli-xgdei").project("t-shirt-segmentation-jb54y")
+    #return project.version(2).model
 
-def yolo_chirag():
-    rf = Roboflow(api_key="jPnk3SftEgcEmCcfhN0F")
-    project = rf.workspace("chirag-s3e7s").project("tshirt-evfwv")
-    return project.version(4).model
-print("changing to Tushar")
+#def yolo_chirag():
+    # rf = Roboflow(api_key="jPnk3SftEgcEmCcfhN0F")
+    #project = rf.workspace("chirag-s3e7s").project("tshirt-evfwv")
+    #return project.version(4).model
+    #print("changing to Tushar")
 
 
 
@@ -94,12 +85,12 @@ def model_img_prediction(model, filename: str) -> str:
     model.predict(filename, confidence=4, overlap=30).save("prediction.jpg")
     return "prediction.jpg"
 
-def model_json_prediction_size(model, filename: str) -> any:
-    model_prediction = model.predict(filename, confidence=20).json()
-    print(model_prediction)
+def model_json_prediction_for_sizing_issue(filename: str, model) -> any:
+    #model_prediction = model.predict(filename, confidence=20).json()
+    #print(model_prediction)
     file_path = "data.txt"
-    with open(file_path, "w") as file:
-        json.dump(model_prediction, file)
+    #with open(file_path, "w") as file:
+       # json.dump(model_prediction, file)
     # Open the file in read mode and load the JSON data
     with open(file_path, "r") as file:
         model_prediction = json.load(file)
@@ -121,6 +112,7 @@ def model_json_prediction_size(model, filename: str) -> any:
                     x.append(point.x)
                     y.append(point.y)
                     t_shirt_contour.append((point.x, point.y))
+
     # Create a scatter plot
     t_shirt_contour = np.array(t_shirt_contour)
     plt.scatter(x, y)
@@ -134,7 +126,19 @@ def model_json_prediction_size(model, filename: str) -> any:
     plt.show()
     plt.savefig('scatter_plot.png')
 
-    build_t_shirt_key_points(t_shirt_contour, "sizing_img.jpg")
+
+   # build_t_shirt_key_points(t_shirt_contour, "sizing_img.jpg")
+    for prediction in predictions:
+        sleeve_predictions = []
+        if "sleeve" in prediction.class_:
+            sleeve_contour = []
+            for point in prediction.points:
+                sleeve_contour.append((point.x, point.y))
+            sleeve_contour = np.array(sleeve_contour)
+            get_gradient_quadrant_for_contour(sleeve_contour)
+
+    return predictions
+
 
 
 

@@ -1,19 +1,43 @@
 import cv2
 import numpy as np
-from decimal  import  Decimal
+from decimal import Decimal
+import matplotlib.pyplot as plt
 
 
-def RIGHT_WAIST_CORNER_PT(border_contour, read_image, t_shirt_builder, index):
-    reshaped_contour = border_contour.reshape(border_contour.shape[0], 2)
+def RIGHT_WAIST_CORNER_PT(predictions, t_shirt_builder, filtered_contour, index):
+    t_shirt = [x for x in predictions if x.class_ == "t_shirt"][0]
+    t_shirt_contour = []
+    for point in t_shirt.points:
+        t_shirt_contour.append((point.x, point.y))
+    t_shirt_contour = np.array(t_shirt_contour)
+    mIndex = index
+    break_both_loops = False
 
     while True:
-        if border_contour[index][0] >= border_contour[index + 1][0]:
-            coordinates = tuple(reshaped_contour[index])
-            t_shirt_builder.RIGHT_WAIST_CORNER_PT = t_shirt_builder.RIGHT_WAIST_CORNER_PT._replace(
-                coordinates=coordinates,  border_contour_index=index
-            )
+        # print(t_shirt_contour[mIndex])
+        # print(abs(t_shirt_contour[mIndex][0]  - t_shirt_contour[mIndex + 10][0])/t_shirt_contour[mIndex][0])
+        if ((abs(t_shirt_contour[mIndex][0] - t_shirt_contour[mIndex + 10][0]) / t_shirt_contour[mIndex][0]) < 0.02) and (
+                t_shirt_contour[mIndex][1] >= t_shirt_contour[mIndex + 10][1]):
+
+            print("Heyaa")
+            while True:
+                if t_shirt_contour[mIndex + 1][0] > t_shirt_contour[mIndex][0]:
+                    mIndex = mIndex + 1
+                else:
+                    print(int(t_shirt_contour[mIndex][0]), int(t_shirt_contour[mIndex][1]))
+                    plt.scatter(int(t_shirt_contour[mIndex][0]), int(t_shirt_contour[mIndex][1]), c='black',
+                                marker='o', s=100, label='Changed Point')
+
+                    t_shirt_builder.RIGHT_WAIST_CORNER_PT = t_shirt_builder.RIGHT_WAIST_CORNER_PT._replace(
+                        coordinates=(int(t_shirt_contour[mIndex][0]), int(t_shirt_contour[mIndex][1])),
+                        border_contour_index=mIndex)
+                    plt.savefig('sleeves_1.png')
+                    break_both_loops = True
+
+                    break
+
+        if break_both_loops:
             break
 
         else:
-            index = index + 1
-    cv2.circle(read_image, tuple(coordinates), 25, (255, 0, 0), 3)
+            mIndex = mIndex + 1

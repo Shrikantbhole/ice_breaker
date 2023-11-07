@@ -1,4 +1,6 @@
 import streamlit as st
+
+from crawler import build_t_shirt_key_points
 from llm_response import run_llm
 import time
 from streamlit_chat import message
@@ -7,9 +9,12 @@ from streamlit_cropper import st_cropper
 import numpy as np
 import cv2
 
+
 from roboflow import Roboflow
+
+from rf_sizing_pre_processing import correct_class_for_sleeves, get_corner_coordinates_for_tshirt
 from roboflow_inference import model_img_prediction, model_json_prediction, Box, calculate_iou, \
-    generate_response_based_upon_result, yolo_chirag, yolo_tushar, get_iou_input_and_iou_predicted, yolo_shrikant, model_json_prediction_size
+    generate_response_based_upon_result,  get_iou_input_and_iou_predicted, model_json_prediction_for_sizing_issue
 
 
 st.header("Ice breaker Helper Bot")
@@ -107,7 +112,13 @@ if img_file:
             raw_image = np.asarray(img).astype('uint8')
             bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
             cv2.imwrite('sizing_img.jpg', bgr_image)
-            model_json_prediction_size(yolo_shrikant(), "sizing_img.jpg" )
+            predictions = model_json_prediction_for_sizing_issue("sizing_img.jpg", "xyz")
+            predictions = get_corner_coordinates_for_tshirt(predictions)
+            corrected_predictions = correct_class_for_sleeves(predictions)
+            print("Corrected Predictions")
+            print(corrected_predictions)
+            build_t_shirt_key_points(corrected_predictions)
+
         if st.session_state.issue == "quality":
             print("Session State: " + str(st.session_state))
             st.session_state["user_prompt_history"] = []

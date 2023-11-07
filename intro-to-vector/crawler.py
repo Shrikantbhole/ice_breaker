@@ -1,66 +1,62 @@
-from enum import Enum
-from collections import namedtuple
-from decimal import Decimal
-import math
-import matplotlib.pyplot as plt
 
+from contour_preprocessing import key_points_identified_by_slope_transition, key_points_filtered_by_gradient
 from t_shirt_builder import TShirtBuilder
-from t_shirt_key_points.LEFT_SHOULDER_CORNER_PT import *
 from t_shirt_key_points.LEFT_CHEST_CORNER_PT import LEFT_CHEST_CORNER_PT
-from t_shirt_key_points.LEFT_COLLAR_PT import LEFT_COLLAR_PT
-from t_shirt_key_points.LEFT_SLEEVE_INSIDE_PT import LEFT_SLEEVE_INSIDE_PT
 from t_shirt_key_points.LEFT_SHOULDER_PT import *
 from t_shirt_key_points.LEFT_WAIST_CORNER_PT import LEFT_WAIST_CORNER_PT
 from t_shirt_key_points.RIGHT_CHEST_CORNER_PT import RIGHT_CHEST_CORNER_PT
-from t_shirt_key_points.RIGHT_COLLAR_PT import RIGHT_COLLAR_PT
+from t_shirt_key_points.RIGHT_SHOULDER_PT import RIGHT_SHOULDER_PT
 from t_shirt_key_points.RIGHT_SHOULDER_CORNER_PT import RIGHT_SHOULDER_CORNER_PT
-from t_shirt_key_points.RIGHT_SLEEVE_INSIDE_PT import RIGHT_SLEEVE_INSIDE_PT
-from t_shirt_key_points.RIGHT_SLEEVE_OUTSIDE_PT import RIGHT_SLEEVE_OUTSIDE_PT
 from t_shirt_key_points.RIGHT_WAIST_CORNER_PT import RIGHT_WAIST_CORNER_PT
 
 
-def build_t_shirt_key_points(border_contour, image_path):
+def build_t_shirt_key_points(predictions):
 
-    read_image = cv2.imread("D:\Desktop\ice-breaker\intro-to-vector\sizing_img.jpg")
-    t_shirt = TShirtBuilder()
-    LEFT_SHOULDER_PT(border_contour, read_image, t_shirt)
-    LEFT_SLEEVE_INSIDE_PT(border_contour, read_image, t_shirt, t_shirt.LEFT_SLEEVE_OUTSIDE_PT.border_contour_index + 1)
-    LEFT_CHEST_CORNER_PT(border_contour, read_image, t_shirt, t_shirt.LEFT_SLEEVE_INSIDE_PT.border_contour_index + 1)
-    LEFT_WAIST_CORNER_PT(border_contour, read_image, t_shirt, t_shirt.LEFT_CHEST_CORNER_PT.border_contour_index + 1)
-    RIGHT_WAIST_CORNER_PT(border_contour, read_image, t_shirt, t_shirt.LEFT_WAIST_CORNER_PT.border_contour_index + 1)
-    RIGHT_CHEST_CORNER_PT(border_contour,read_image,t_shirt,t_shirt.RIGHT_WAIST_CORNER_PT.border_contour_index + 1)
-    RIGHT_SLEEVE_INSIDE_PT(border_contour, read_image, t_shirt, t_shirt.RIGHT_CHEST_CORNER_PT.border_contour_index + 1)
-    RIGHT_SLEEVE_OUTSIDE_PT(border_contour, read_image, t_shirt, t_shirt.RIGHT_SLEEVE_INSIDE_PT.border_contour_index + 1)
-    RIGHT_COLLAR_PT(border_contour, read_image, t_shirt, t_shirt.RIGHT_SLEEVE_OUTSIDE_PT.border_contour_index + 1)
-    LEFT_COLLAR_PT(border_contour, read_image, t_shirt, t_shirt.RIGHT_COLLAR_PT.border_contour_index + 1)
+    read_image = cv2.imread("sizing_img.jpg")
+    t_shirt_builder = TShirtBuilder()
+    t_shirt_contour = []
+    t_shirt_class = [x for x in predictions if x.class_ == "t_shirt"][0]
+    for point in t_shirt_class.points:
+        t_shirt_contour.append((point.x, point.y))
+    t_shirt_contour = np.array(t_shirt_contour)
+    filtered_contour = key_points_identified_by_slope_transition(t_shirt_contour)
+    filtered_contour = key_points_filtered_by_gradient(filtered_contour)
 
-    #plt.imshow(read_image)
-    #plt.show()
-    #t_shirt.get_key_points_with_marking(read_image, border_contour)
+    LEFT_SHOULDER_PT(predictions, t_shirt_builder ,filtered_contour)
+    LEFT_CHEST_CORNER_PT(predictions,  t_shirt_builder, filtered_contour, t_shirt_builder.LEFT_SHOULDER_PT.border_contour_index + 1)
+    LEFT_WAIST_CORNER_PT(predictions,  t_shirt_builder, filtered_contour, t_shirt_builder.LEFT_CHEST_CORNER_PT.border_contour_index + 1)
+    RIGHT_WAIST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index + 1)
+    RIGHT_CHEST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index + 1)
+    RIGHT_SHOULDER_PT(predictions, t_shirt_builder, filtered_contour)
+    chest_length = t_shirt_builder.RIGHT_CHEST_CORNER_PT.coordinates[0] - t_shirt_builder.LEFT_CHEST_CORNER_PT.coordinates[0]
+    print("chest length: " + str(chest_length) )
+    shoulder_length = t_shirt_builder.RIGHT_SHOULDER_PT.coordinates[0] - \
+                   t_shirt_builder.LEFT_SHOULDER_PT.coordinates[0]
+    print("shoulder length: " + str(shoulder_length))
+    coords = t_shirt_contour[t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index
+                            :t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index]
+    coords = coords.reshape(coords.shape[0], 2).tolist()
+    y_coords = [coord[1] for coord in coords]
+    average_y_waist = sum(y_coords) / len(y_coords)
+    print(average_y_waist)
+    y_neck = t_shirt_class.corner_coordinate.top_coordinate[1]
+    plt.scatter(int(t_shirt_class.corner_coordinate.top_coordinate[0]), int(t_shirt_class.corner_coordinate.top_coordinate[1]), c='black',
+                marker='o', s=100, label='Changed Point')
+    plt.savefig('sleeves_1.png')
+
+    tshirt_length = average_y_waist - y_neck
+    print("tshirt length: " + str(tshirt_length))
+    print("C/S: " )
+    print(round(chest_length/shoulder_length, 2))
+    print("C/L: ")
+    print(round(chest_length / tshirt_length,2))
+    print("S/L: ")
+    print(round(shoulder_length / tshirt_length,2))
+    return t_shirt_builder
 
 
-    print("neck_opening", t_shirt.build_neck_opening().neck_opening)
-    print("body length", t_shirt.build_body_length().body_length)
-    print("sleeve opening", t_shirt.build_sleeve_opening().sleeve_opening)
-    print("left waist  pt", t_shirt.LEFT_WAIST_CORNER_PT)
-    print("left collar  pt", t_shirt.LEFT_COLLAR_PT)
-    #crawler.get_key_points_with_marking(t_shirt)
-    return t_shirt, read_image
 
 
-def build_t_shirt_left_shoulder_pt(border_contour, image, t_shirt):
-    border_contour_reshape = border_contour.reshape(border_contour.shape[0], 2).tolist()
-
-    LEFT_SHOULDER_CORNER_PT(border_contour, image, t_shirt)
-    #plt.imshow(read_image)
-    #plt.show()
-    return t_shirt,image
-
-def build_t_shirt_right_shoulder_pt(border_contour, image, t_shirt):
-    border_contour_reshape = border_contour.reshape(border_contour.shape[0], 2).tolist()
-
-    RIGHT_SHOULDER_CORNER_PT(border_contour, image, t_shirt)
-    return t_shirt, image
 
 
 
@@ -84,20 +80,20 @@ class Crawler:
 
     def get_image(self):
         grid_interval = 30
-        grid_colour = (0,255,0)
-        #for y in range(0, self.read_image.shape[0], grid_interval):
+        grid_colour = (0 ,255 ,0)
+        # for y in range(0, self.read_image.shape[0], grid_interval):
          #  cv2.line(self.read_image, (0,y), (self.read_image.shape[1],y),grid_colour,1)
-        #for x in range(0, self.read_image.shape[1], grid_interval):
+        # for x in range(0, self.read_image.shape[1], grid_interval):
          #  cv2.line(self.read_image, (x,0), (x, self.read_image.shape[0]),grid_colour,1)
 
-        #cv2.imwrite("image_with_grid.jpg",self.read_image)
+        # cv2.imwrite("image_with_grid.jpg",self.read_image)
 
         plt.imshow(self.read_image)
         plt.show()
 
-        #cv2.imshow("Marked Points", self.read_image)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
+        # cv2.imshow("Marked Points", self.read_image)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
 
 
 

@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08e2a342-42ff-4bfb-91b5-26acfab9567c" name="Changes" comment="Made changes to include Streamlit in our app - basic chatbot">
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/crawler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_CHEST_CORNER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_COLLAR_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_SHOULDER_CORNER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_SHOULDER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_SLEEVE_INSIDE_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/LEFT_WAIST_CORNER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_CHEST_CORNER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_COLLAR_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_SHOULDER_CORNER_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_SLEEVE_INSIDE_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_SLEEVE_OUTSIDE_PT.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intro-to-vector/t_shirt_key_points/RIGHT_WAIST_CORNER_PT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intro-to-vector/llm_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro-to-vector/llm_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intro-to-vector/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro-to-vector/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intro-to-vector/roboflow_inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/intro-to-vector/roboflow_inference.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +101,6 @@
         <env name="OPENAI_API_KEY" value="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" />
       </envs>
       <option name="SDK_HOME" value="C:\python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/intro-to-vector" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -175,7 +157,7 @@
         <env name="OPENAI_API_KEY" value="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" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\Hi\.virtualenvs\ice-breaker-oetCzTMT\Scripts\python.exe" />
-      <option name="SDK_NAME" value="Pipenv (ice-breaker)" />
+      <option name="SDK_NAME" value="Python 3.11 (ice_breaker)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/intro-to-vector" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -248,6 +230,7 @@
       <workItem from="1699005202507" duration="11772000" />
       <workItem from="1699019327318" duration="163000" />
       <workItem from="1699019605041" duration="812000" />
+      <workItem from="1699025940630" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="Made changes to include Streamlit in our app - basic chatbot">
       <option name="closed" value="true" />
@@ -299,21 +282,16 @@
           <line>22</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/intro-to-vector/main.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ice_breaker_py$docker_create.coverage" NAME="docker_create Coverage Results" MODIFIED="1695205199710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
-    <SUITE FILE_PATH="coverage/ice_breaker_py$py_pdf.coverage" NAME="py_pdf Coverage Results" MODIFIED="1695308497740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
     <SUITE FILE_PATH="coverage/ice_breaker_py$main.coverage" NAME="main Coverage Results" MODIFIED="1695307077615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
-    <SUITE FILE_PATH="coverage/ice_breaker_py$ice_breaker.coverage" NAME="ice_breaker Coverage Results" MODIFIED="1695307998403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/ice_breaker_py$streamlit_chat.coverage" NAME="streamlit-chat Coverage Results" MODIFIED="1699020030414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
     <SUITE FILE_PATH="coverage/ice_breaker_py$docker_start.coverage" NAME="docker_start Coverage Results" MODIFIED="1695211350278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
+    <SUITE FILE_PATH="coverage/ice_breaker_py$py_pdf.coverage" NAME="py_pdf Coverage Results" MODIFIED="1695308497740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
+    <SUITE FILE_PATH="coverage/ice_breaker_py$streamlit_chat.coverage" NAME="streamlit-chat Coverage Results" MODIFIED="1699025900653" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
+    <SUITE FILE_PATH="coverage/ice_breaker_py$docker_create.coverage" NAME="docker_create Coverage Results" MODIFIED="1695205199710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
+    <SUITE FILE_PATH="coverage/ice_breaker_py$ice_breaker.coverage" NAME="ice_breaker Coverage Results" MODIFIED="1695307998403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/ice_breaker_py$ice_breaker_2.coverage" NAME="ice_breaker_2 Coverage Results" MODIFIED="1698484185651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/intro-to-vector" />
   </component>
 </project>
