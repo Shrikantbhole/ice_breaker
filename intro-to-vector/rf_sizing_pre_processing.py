@@ -4,7 +4,7 @@ import cv2
 import matplotlib.pyplot as plt
 import copy
 
-from models.CornerCoordinates import CornerCoordinate
+from models.corner_coordinates import CornerCoordinate
 
 
 def get_index_of_left_corner_pt(contour):

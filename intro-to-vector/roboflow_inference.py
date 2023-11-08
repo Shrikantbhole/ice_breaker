@@ -11,9 +11,10 @@ from models.PredictionItem import PredictionItem
 from rf_sizing_pre_processing import get_gradient_quadrant_for_contour
 t_shirt_segments = {
     "4": "t_shirt",
-    "1": "neck",
+    "2": "neck",
     "3": "right_sleeve",
-    "0": "left_sleeve"
+    "1": "left_sleeve",
+    "0": "coin"
 }
 
 

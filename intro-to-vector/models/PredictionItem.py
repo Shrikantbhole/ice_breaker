@@ -1,6 +1,10 @@
 from pydantic import BaseModel, Field
 
-from models.CornerCoordinates import CornerCoordinate
+class CornerCoordinate(BaseModel):
+    left_coordinate: tuple = None
+    right_coordinate: tuple = None
+    top_coordinate: tuple = None
+    bottom_coordinate: tuple = None
 
 
 class Coordinate(BaseModel):

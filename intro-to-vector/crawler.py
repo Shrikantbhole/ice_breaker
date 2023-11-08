@@ -24,34 +24,34 @@ def build_t_shirt_key_points(predictions):
 
     LEFT_SHOULDER_PT(predictions, t_shirt_builder ,filtered_contour)
     LEFT_CHEST_CORNER_PT(predictions,  t_shirt_builder, filtered_contour, t_shirt_builder.LEFT_SHOULDER_PT.border_contour_index + 1)
-    LEFT_WAIST_CORNER_PT(predictions,  t_shirt_builder, filtered_contour, t_shirt_builder.LEFT_CHEST_CORNER_PT.border_contour_index + 1)
-    RIGHT_WAIST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index + 1)
-    RIGHT_CHEST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index + 1)
-    RIGHT_SHOULDER_PT(predictions, t_shirt_builder, filtered_contour)
-    chest_length = t_shirt_builder.RIGHT_CHEST_CORNER_PT.coordinates[0] - t_shirt_builder.LEFT_CHEST_CORNER_PT.coordinates[0]
-    print("chest length: " + str(chest_length) )
-    shoulder_length = t_shirt_builder.RIGHT_SHOULDER_PT.coordinates[0] - \
-                   t_shirt_builder.LEFT_SHOULDER_PT.coordinates[0]
-    print("shoulder length: " + str(shoulder_length))
-    coords = t_shirt_contour[t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index
-                            :t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index]
-    coords = coords.reshape(coords.shape[0], 2).tolist()
-    y_coords = [coord[1] for coord in coords]
-    average_y_waist = sum(y_coords) / len(y_coords)
-    print(average_y_waist)
-    y_neck = t_shirt_class.corner_coordinate.top_coordinate[1]
-    plt.scatter(int(t_shirt_class.corner_coordinate.top_coordinate[0]), int(t_shirt_class.corner_coordinate.top_coordinate[1]), c='black',
-                marker='o', s=100, label='Changed Point')
-    plt.savefig('sleeves_1.png')
+    #LEFT_WAIST_CORNER_PT(predictions,  t_shirt_builder, filtered_contour, t_shirt_builder.LEFT_CHEST_CORNER_PT.border_contour_index + 1)
+    #RIGHT_WAIST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index + 1)
+   #RIGHT_CHEST_CORNER_PT(predictions,  t_shirt_builder ,filtered_contour, t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index + 1)
+    #RIGHT_SHOULDER_PT(predictions, t_shirt_builder, filtered_contour)
+    #chest_length = t_shirt_builder.RIGHT_CHEST_CORNER_PT.coordinates[0] - t_shirt_builder.LEFT_CHEST_CORNER_PT.coordinates[0]
+   # print("chest length: " + str(chest_length) )
+    #shoulder_length = t_shirt_builder.RIGHT_SHOULDER_PT.coordinates[0] - \
+    #               t_shirt_builder.LEFT_SHOULDER_PT.coordinates[0]
+   # print("shoulder length: " + str(shoulder_length))
+    #coords = t_shirt_contour[t_shirt_builder.LEFT_WAIST_CORNER_PT.border_contour_index
+   #                         :t_shirt_builder.RIGHT_WAIST_CORNER_PT.border_contour_index]
+   # coords = coords.reshape(coords.shape[0], 2).tolist()
+    #y_coords = [coord[1] for coord in coords]
+    #average_y_waist = sum(y_coords) / len(y_coords)
+   # print(average_y_waist)
+    #y_neck = t_shirt_class.corner_coordinate.top_coordinate[1]
+   # plt.scatter(int(t_shirt_class.corner_coordinate.top_coordinate[0]), int(t_shirt_class.corner_coordinate.top_coordinate[1]), c='black',
+    #            marker='o', s=100, label='Changed Point')
+    #plt.savefig('sleeves_1.png')
 
-    tshirt_length = average_y_waist - y_neck
-    print("tshirt length: " + str(tshirt_length))
-    print("C/S: " )
-    print(round(chest_length/shoulder_length, 2))
-    print("C/L: ")
-    print(round(chest_length / tshirt_length,2))
-    print("S/L: ")
-    print(round(shoulder_length / tshirt_length,2))
+    #tshirt_length = average_y_waist - y_neck
+    #print("tshirt length: " + str(tshirt_length))
+    #print("C/S: " )
+    #print(round(chest_length/shoulder_length, 2))
+    #print("C/L: ")
+   # print(round(chest_length / tshirt_length,2))
+    #print("S/L: ")
+    #print(round(shoulder_length / tshirt_length,2))
     return t_shirt_builder
 
 

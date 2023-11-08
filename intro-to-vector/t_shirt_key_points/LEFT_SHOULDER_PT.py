@@ -26,13 +26,13 @@ def LEFT_SHOULDER_PT(predictions, t_shirt_builder,filtered_contour):
                 abs(t_shirt_contour[index][1] - left_shoulder_coordinate[1]) < deviation):
             #print("heyaa")
             deviation = abs(t_shirt_contour[index][0] - left_shoulder_coordinate[0]) + abs(t_shirt_contour[index][1] - left_shoulder_coordinate[1])
-            print(t_shirt_contour[index])
-            print(deviation)
+            #print(t_shirt_contour[index])
+            #print(deviation)
             proximity_index = index
 
         index = (index + 1)
         if index == len(t_shirt_contour) - 1:
-            print("Noppwwww")
+            #print("Noppwwww")
             break
     index = 0
     deviation = (abs(left_sleeve_contour[0][0] - t_shirt_contour[proximity_index][0]) +
@@ -45,13 +45,13 @@ def LEFT_SHOULDER_PT(predictions, t_shirt_builder,filtered_contour):
             # print("heyaa")
             deviation = abs(left_sleeve_contour[index][0] - t_shirt_contour[proximity_index][0]) + abs(
                 left_sleeve_contour[index][1] - t_shirt_contour[proximity_index][1])
-            print(left_sleeve_contour[index])
-            print(deviation)
+            #print(left_sleeve_contour[index])
+            #print(deviation)
             sleeve_proximity_index = index
 
         index = (index + 1)
         if index == len(left_sleeve_contour) - 1:
-            print("Noppwwww")
+            #print("Noppwwww")
             break
     x = int((t_shirt_contour[proximity_index][0] + left_sleeve_contour[sleeve_proximity_index][0])/2)
     y = int((t_shirt_contour[proximity_index][1] + left_sleeve_contour[sleeve_proximity_index][1]) / 2)
