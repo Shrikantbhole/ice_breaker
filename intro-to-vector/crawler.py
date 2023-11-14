@@ -34,36 +34,40 @@ def build_t_shirt_key_points(predictions):
         json.dump(left_sleeve_contour, json_file, indent=2)
 
     mobile_contour = []
-    mobile_class = [x for x in predictions if x.class_ == "mobile"][0]
-    for point in mobile_class.points:
-        mobile_contour.append((point.x, point.y))
-    mobile_contour = np.array(mobile_contour)
-    print("mobile")
-    x_coordinates = mobile_contour[:,0]
-    y_coordinates = mobile_contour[:, 1]
-    # Find min and max values along each axis
-    min_x, max_x = np.min(x_coordinates), np.max(x_coordinates)
-    min_y, max_y = np.min(y_coordinates), np.max(y_coordinates)
-    x_avg = (min_x + max_x)/2
-    y_avg = (min_y + max_y) / 2
-    indices = np.where(y_coordinates < y_avg)
-    print("indices", indices)
-    filtered_top_coordinates = x_coordinates[indices]
-    top_min_x, top_max_x = np.min(filtered_top_coordinates), np.max(filtered_top_coordinates)
-    indices = np.where(y_coordinates > y_avg)
-    filtered_bottom_coordinates = x_coordinates[indices]
-    bot_min_x, bot_max_x = np.min(filtered_bottom_coordinates), np.max(filtered_bottom_coordinates)
-    indices = np.where(x_coordinates < x_avg)
-    filtered_left_coordinates = y_coordinates[indices]
-    left_min_y, left_max_y = np.min(filtered_left_coordinates), np.max(filtered_left_coordinates)
-    indices = np.where(x_coordinates > x_avg)
-    filtered_right_coordinates = y_coordinates[indices]
-    right_min_y, right_max_y = np.min(filtered_right_coordinates), np.max(filtered_right_coordinates)
+    try:
+        mobile_class = [x for x in predictions if x.class_ == "mobile"][0]
+        for point in mobile_class.points:
+            mobile_contour.append((point.x, point.y))
+        mobile_contour = np.array(mobile_contour)
+        print("mobile")
+        x_coordinates = mobile_contour[:,0]
+        y_coordinates = mobile_contour[:, 1]
+        # Find min and max values along each axis
+        min_x, max_x = np.min(x_coordinates), np.max(x_coordinates)
+        min_y, max_y = np.min(y_coordinates), np.max(y_coordinates)
+        x_avg = (min_x + max_x)/2
+        y_avg = (min_y + max_y) / 2
+        indices = np.where(y_coordinates < y_avg)
+        print("indices", indices)
+        filtered_top_coordinates = x_coordinates[indices]
+        top_min_x, top_max_x = np.min(filtered_top_coordinates), np.max(filtered_top_coordinates)
+        indices = np.where(y_coordinates > y_avg)
+        filtered_bottom_coordinates = x_coordinates[indices]
+        bot_min_x, bot_max_x = np.min(filtered_bottom_coordinates), np.max(filtered_bottom_coordinates)
+        indices = np.where(x_coordinates < x_avg)
+        filtered_left_coordinates = y_coordinates[indices]
+        left_min_y, left_max_y = np.min(filtered_left_coordinates), np.max(filtered_left_coordinates)
+        indices = np.where(x_coordinates > x_avg)
+        filtered_right_coordinates = y_coordinates[indices]
+        right_min_y, right_max_y = np.min(filtered_right_coordinates), np.max(filtered_right_coordinates)
 
-    print("Top X:", top_min_x, top_max_x)
-    print("Bot X:", bot_min_x, bot_max_x)
-    print("Left Y:",left_min_y, left_max_y )
-    print("Right Y:", right_min_y, right_max_y)
+        print("Top X:", top_min_x, top_max_x)
+        print("Bot X:", bot_min_x, bot_max_x)
+        print("Left Y:",left_min_y, left_max_y )
+        print("Right Y:", right_min_y, right_max_y)
+    except Exception as e:
+        print(e.__str__())
+
     LEFT_WAIST_CORNER_PT(predictions, t_shirt_builder)
     LEFT_CHEST_CORNER_PT(predictions, t_shirt_builder)
     LEFT_SHOULDER_PT(predictions, t_shirt_builder, t_shirt_builder.LEFT_CHEST_CORNER_PT.border_contour_index + 1)
@@ -99,7 +103,7 @@ def build_t_shirt_key_points(predictions):
     print(round(chest_length / tshirt_length,2))
     print("S/L: ")
     print(round(shoulder_length / tshirt_length,2))
-    return t_shirt_builder
+    return chest_length,shoulder_length, tshirt_length
 
 
 

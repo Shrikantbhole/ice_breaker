@@ -1,3 +1,6 @@
+import base64
+import os
+
 import streamlit as st
 
 from add_mobile_to_image import add_mobile_to_image
@@ -8,12 +11,13 @@ from PIL import Image, ImageOps
 from streamlit_cropper import st_cropper
 import numpy as np
 import cv2
+from zipfile import ZipFile
 from add_coin_to_image import add_coin_to_image
 
 
 from rf_sizing_pre_processing import correct_class_for_sleeves, get_corner_coordinates_for_tshirt
-from roboflow_inference import model_img_prediction, Box, generate_response_based_upon_result,  get_iou_input_and_iou_predicted, model_json_prediction_for_sizing_issue
-
+from roboflow_inference import model_img_prediction, Box, generate_response_based_upon_result, \
+    get_iou_input_and_iou_predicted, model_json_prediction_for_sizing_issue, get_prediction_using_YOLO
 
 st.header("Ice breaker Helper Bot")
 # st.session_state.widget = ''
@@ -61,11 +65,16 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 # Upload an image and set some options for demo purposes
 
 img_file = st.sidebar.file_uploader(label='Upload a file', type=['png', 'jpg'], key=1)
+img_folder = st.sidebar.file_uploader(label = "Upload a folder of images", type = "zip", key = "zipfile")
 realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True, key=2)
 box_color = st.sidebar.color_picker(label="Box Color", value='#0000FF', key=3)
 stroke_width = st.sidebar.number_input(label="Box Thickness", value=3, step=1)
 scale_input = st.sidebar.number_input(label="Crop Scale", value=2, step=1)
 model = st.sidebar.radio(label="Select Model", options=["blue", "green"], key=4)
+selected_folder = st.sidebar.selectbox("Select a folder: ", ["images", "images_2"])
+check_images = st.sidebar.button(label = "Check Images")
+download_images = st.sidebar.button(label = "Download Images")
+
 
 # return_type_choice = st.sidebar.radio(label="Return type", options=["Cropped image", "Rect coords"])
 # return_type_dict = {
@@ -77,6 +86,48 @@ model = st.sidebar.radio(label="Select Model", options=["blue", "green"], key=4)
 if st.button('Add Coin'):
     add_mobile_to_image.add_mobile_to_image()
 
+if img_folder:
+    with open("temp.zip", "wb") as f:
+        f.write(img_folder.read())
+    # Extract all contents of zip folder to a temporary folder
+    with  ZipFile("temp.zip", "r") as zip_ref:
+        zip_ref.extractall("predict")
+    st.success("Folder uploaded and extracted successfully")
+
+
+IMAGE_CHECKED = False
+if check_images:
+    # Display the list of images in the uploaded folder
+    print(selected_folder)
+    directory = "samples/" + selected_folder
+    image_files = [f for f in os.listdir(directory )]
+    for image_file in image_files:
+        image_path = os.path.join(directory, image_file)
+        image = Image.open(image_path)
+        st.image(image, use_column_width=True)
+    IMAGE_CHECKED = True
+    #st.write("List of images in  the uploaded folder:")
+    #print(image_files)
+    #st.write(image_files[0])
+
+if download_images:
+    directory = "samples/" + selected_folder
+    image_files = [f for f in os.listdir(directory)]
+    zip_file_name = f"{selected_folder}_images.zip"
+
+    with st.spinner(f"Creating {zip_file_name}.... "):
+        st.write("Downloading...")
+        with ZipFile(zip_file_name, 'w') as zipf:
+            for image_file in image_files:
+                image_path = os.path.join(directory, image_file)
+                zipf.write(image_path, os.path.basename(image_file))
+        with open(zip_file_name, "rb") as f:
+            zip_contents = f.read()
+
+        # Encode the zip file as base64
+        zip_b64 = base64.b64encode(zip_contents).decode()
+        href = f'<a href="data:application/zip;base64,{zip_b64}" download="{zip_file_name}">Click here to download</a>'
+        st.markdown(href, unsafe_allow_html=True)
 
 if img_file:
 
@@ -107,19 +158,34 @@ if img_file:
         return_type="box",
         stroke_width=stroke_width
     )
+    CHEST = []
+    SHOULDER = []
+    TSHIRT = []
     if st.button('Submit'):
         print("Session State: " + str(st.session_state))
         if st.session_state.issue == "sizing":
+            directory = "predict/images"
+            image_files = [f for f in os.listdir(directory)]
+            for image_file in image_files:
+                img = Image.open(os.path.join(directory,image_file))
+                raw_image = np.asarray(img).astype('uint8')
+                bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
+                cv2.imwrite('sizing_img.jpg', bgr_image)
+                predictions = model_json_prediction_for_sizing_issue("sizing_img.jpg")
+                predictions = get_corner_coordinates_for_tshirt(predictions)
+                corrected_predictions = correct_class_for_sleeves(predictions)
+                #print("Corrected Predictions")
+                #print(corrected_predictions)
+                chest_length, shoulder_length, tshirt_length = build_t_shirt_key_points(corrected_predictions)
+                CHEST.append(chest_length)
+                SHOULDER.append(shoulder_length)
+                TSHIRT.append(tshirt_length)
 
-            raw_image = np.asarray(img).astype('uint8')
-            bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
-            cv2.imwrite('sizing_img.jpg', bgr_image)
-            predictions = model_json_prediction_for_sizing_issue("sizing_img.jpg", "xyz")
-            predictions = get_corner_coordinates_for_tshirt(predictions)
-            corrected_predictions = correct_class_for_sleeves(predictions)
-            #print("Corrected Predictions")
-            #print(corrected_predictions)
-            build_t_shirt_key_points(corrected_predictions)
+            print(f"chest: " + str(sum(CHEST)/len(CHEST)))
+            print(f"shoulder: " + str(sum(SHOULDER) / len(SHOULDER)))
+            print(f"tshirt: " + str(sum(TSHIRT) / len(TSHIRT)))
+
+
 
         if st.session_state.issue == "quality":
             print("Session State: " + str(st.session_state))
