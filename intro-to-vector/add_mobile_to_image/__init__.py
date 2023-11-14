@@ -1,0 +1,3 @@
+#In Python, the __init__.py file is used to indicate that a directory should be treated as a Python package
+#The __init__.py file can contain Python code that is executed when the package is imported. This allows you to perform package-level initialization tasks, define package-level variables, and set up package-level configuration.
+# It provides a place for package-level code that should run when the package is used.

@@ -158,5 +158,5 @@ def key_points_filtered_by_gradient(contour):
 
         except:
             1 == 1
-    print(refined_filter_contour)
+    #print(refined_filter_contour)
     return refined_filter_contour

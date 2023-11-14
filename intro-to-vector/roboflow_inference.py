@@ -13,8 +13,8 @@ t_shirt_segments = {
     "4": "t_shirt",
     "2": "neck",
     "3": "right_sleeve",
-    "1": "left_sleeve",
-    "0": "coin"
+    "1": "mobile",
+    "0": "left_sleeve"
 }
 
 
@@ -151,7 +151,7 @@ def model_json_prediction_for_sizing_issue(filename: str, model) -> any:
 
 def model_json_prediction(model, filename: str) -> list[Box]:
     model_prediction = model.predict(filename, confidence=4, overlap=30).json()
-    print(model_prediction)
+    #print(model_prediction)
 
     # Parse and validate the JSON data
     predictions_data = PredictionsData.parse_obj(model_prediction)
@@ -166,7 +166,7 @@ def model_json_prediction(model, filename: str) -> list[Box]:
             width=prediction.width,
             height=prediction.height
         )
-        print(box)
+        #print(box)
         box_objects.append(box)
     return box_objects
 

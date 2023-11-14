@@ -107,7 +107,7 @@ def correct_class_for_sleeves(predictions):
     # Deep copy
 
     sleeve_predictions = [x for x in predictions if "sleeve" in x.class_]
-    print(sleeve_predictions)
+    #print(sleeve_predictions)
     remove_predictions = []
 
 
@@ -118,9 +118,9 @@ def correct_class_for_sleeves(predictions):
         for point in prediction.points:
             sleeve_contour.append((point.x, point.y))
         sleeve_coordinates = get_corner_coordinates_for_contour(sleeve_contour)
-        print("Corner Coordinates")
-        print(prediction)
-        print(sleeve_coordinates)
+        #print("Corner Coordinates")
+        #print(prediction)
+        #print(sleeve_coordinates)
         prediction.corner_coordinate = sleeve_coordinates
         width = (sleeve_coordinates.bottom_coordinate[1] - sleeve_coordinates.top_coordinate[1])
         height = (sleeve_coordinates.right_coordinate[0] - sleeve_coordinates.left_coordinate[0])

@@ -1,5 +1,6 @@
 import streamlit as st
 
+from add_mobile_to_image import add_mobile_to_image
 from crawler import build_t_shirt_key_points
 from llm_response import run_llm
 from streamlit_chat import message
@@ -74,7 +75,7 @@ model = st.sidebar.radio(label="Select Model", options=["blue", "green"], key=4)
 # return_type = return_type_dict[return_type_choice]
 
 if st.button('Add Coin'):
-    add_coin_to_image.add_coin_to_image()
+    add_mobile_to_image.add_mobile_to_image()
 
 
 if img_file:
@@ -116,8 +117,8 @@ if img_file:
             predictions = model_json_prediction_for_sizing_issue("sizing_img.jpg", "xyz")
             predictions = get_corner_coordinates_for_tshirt(predictions)
             corrected_predictions = correct_class_for_sleeves(predictions)
-            print("Corrected Predictions")
-            print(corrected_predictions)
+            #print("Corrected Predictions")
+            #print(corrected_predictions)
             build_t_shirt_key_points(corrected_predictions)
 
         if st.session_state.issue == "quality":
