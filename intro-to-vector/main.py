@@ -91,7 +91,7 @@ if img_folder:
         f.write(img_folder.read())
     # Extract all contents of zip folder to a temporary folder
     with  ZipFile("temp.zip", "r") as zip_ref:
-        zip_ref.extractall("predict")
+        zip_ref.extractall("images")
     st.success("Folder uploaded and extracted successfully")
 
 
@@ -167,6 +167,7 @@ if img_file:
             directory = "predict/images"
             image_files = [f for f in os.listdir(directory)]
             for image_file in image_files:
+                print(image_file)
                 img = Image.open(os.path.join(directory,image_file))
                 raw_image = np.asarray(img).astype('uint8')
                 bgr_image = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)

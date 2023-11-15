@@ -36,7 +36,7 @@ conversation = ConversationChain(
     memory=memory_2,
     verbose=True
 )
-# print(conversation.predict(input = "What would be good time to take coffee break"))
+# print(conversation.images(input = "What would be good time to take coffee break"))
 
 # -------------------------USING LANGCHAIN PROMPT TEMPLATE--------------------------------
 template = """Answer the question based on the context below. If the

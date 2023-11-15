@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 langchain = "*"
 streamlit = "*"
+ultralytics = "*"
+scikit-image = "*"
 
 [dev-packages]
 

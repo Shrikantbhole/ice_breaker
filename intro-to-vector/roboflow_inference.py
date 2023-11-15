@@ -82,18 +82,18 @@ def get_prediction_using_YOLO():
     model = YOLO("best.pt")
     results = model.predict(source = "sizing_img.jpg", conf = 0.25)
     masks = results[0].masks.cpu()
-    print(masks.data)
+    #print(masks.data)
     for mask in masks.data:
-        print(mask)
+        #print(mask)
         contours = measure.find_contours(np.array(mask), 0.5)
         contour_coordinates = [contour for contour in contours]
         points = [{"x": x, "y": y} for y, x in contour_coordinates[0]]
-        print(points)
+        #print(points)
 
 
 
     boxes = results[0].boxes
-    print(np.array(boxes[0].xyxy)[0,0])
+    #print(np.array(boxes[0].xyxy)[0,0])
     classes = np.array(boxes.cls)
     cnf = boxes.conf
     predictions_data = PredictionsData(predictions = [])
@@ -109,7 +109,7 @@ def get_prediction_using_YOLO():
                                          height=np.array(boxes[i].xyxy)[0,3],
                                          confidence=cnf[i] , class_id= classes[i],
                                          points=points,  class_ = "bla")
-        print(prediction_item)
+        #print(prediction_item)
         predictions_data.predictions.append(prediction_item)
         i = i + 1
         # print(i)
@@ -121,6 +121,7 @@ def get_prediction_using_YOLO():
     with open(file_path, 'w') as file:
         file.write(json_string)
     return predictions_data
+
 
 
 
@@ -138,13 +139,13 @@ def get_prediction_using_YOLO():
 
 
 # infer on a local image
-# print(model.predict("your_image.jpg", confidence=40, overlap=30).json())
+# print(model.images("your_image.jpg", confidence=40, overlap=30).json())
 
 # visualize your prediction
-# model.predict("your_image.jpg", confidence=40, overlap=30).save("prediction.jpg")
+# model.images("your_image.jpg", confidence=40, overlap=30).save("prediction.jpg")
 
 # infer on an image hosted elsewhere
-# print(model.predict("URL_OF_YOUR_IMAGE", hosted=True, confidence=40, overlap=30).json())
+# print(model.images("URL_OF_YOUR_IMAGE", hosted=True, confidence=40, overlap=30).json())
 
 
 def model_img_prediction(model, filename: str) -> str:
@@ -152,7 +153,7 @@ def model_img_prediction(model, filename: str) -> str:
     return "prediction.jpg"
 
 def model_json_prediction_for_sizing_issue(filename: str) -> any:
-    #model_prediction = model.predict(filename, confidence=20).json()
+    #model_prediction = model.images(filename, confidence=20).json()
     #print(model_prediction)
     #file_path = "D:\Desktop\ice-breaker\intro-to-vector\data.txt"
     #with open(file_path, "w") as file:
